@@ -1,15 +1,15 @@
-# Project Alpha – Geography Game MVP  
-**Team of 5** | Week 5 | Full Stack App  
+# Project Alpha – Geography Game 
+**DEV5** | Full Stack App  
 
 ---
 
-## 🧭 Problem Statement
+## Problem Statement
 
 Students at the Hive group of secondary schools are struggling to engage with non-STEM subjects. Traditional teaching methods are repetitive and often fail to create lasting interest or knowledge retention in areas like Geography. Our solution is a game that encourages interactive learning through map-based challenges, making non-STEM content more enjoyable.
 
 ---
 
-## 💡 Solution Proposal
+## Solution Proposal
 
 To improve engagement in Geography lessons, we will create a browser-based educational game where students identify countries by their outline and match them to capitals. The game will:
 - Be accessible via login
@@ -22,7 +22,7 @@ The MVP will focus on **one game** only: identifying countries and capitals.
 
 ---
 
-## 👥 Stakeholder Analysis
+## Stakeholder Analysis
 
 | Stakeholder        | Interest Level | Influence Level | Needs                                                  | Our Approach                      |
 |--------------------|----------------|------------------|---------------------------------------------------------|-----------------------------------|
@@ -34,7 +34,7 @@ The MVP will focus on **one game** only: identifying countries and capitals.
 
 ---
 
-## 🌐 High-Level Solution Diagram
+## High-Level Solution Diagram
 
 ```plaintext
 +--------------------+           +---------------------+
