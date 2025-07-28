@@ -19,3 +19,18 @@ CREATE TABLE questions (
 
     image_url TEXT DEFAULT NULL
 );
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    all_time_score INTEGER DEFAULT 0,
+    games_played INTEGER DEFAULT 0,
+    high_score INTEGER DEFAULT 0,
+
+    is_admin BOOLEAN DEFAULT FALSE
+);
