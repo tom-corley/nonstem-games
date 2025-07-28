@@ -1,14 +1,11 @@
-// routers/goats.js
 const { Router } = require('express');
 const router = Router();
-const usersController = require('../controllers/users')
+const usersController = require('../controllers/users');
 
-/*
-router.get('/', diaryController.index)
-router.get('/:id', diaryController.show)
-router.post('/', diaryController.create)
-router.patch('/:id', diaryController.update)
-router.delete('/:id', diaryController.destroy)
-*/
+router.get('/', usersController.index);
+router.get('/:id', usersController.show);
+router.post('/', usersController.create);
+router.patch('/:id', usersController.update);
+router.delete('/:id', usersController.destroy);
 
 module.exports = router;
