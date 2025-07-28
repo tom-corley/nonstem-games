@@ -39,10 +39,40 @@ class Questions {
   }
 
   async update(data) {
-    const result = await db.query(
-      `UPDATE questions SET category=$1, difficulty=$2, question_text=$3, correct_answer=$4, question_type=$5, is_active=$6, choice_a=$7, choice_b=$8, choice_c=$9, choice_d=$10, image_url=$11, updated_at=NOW() WHERE id=$12 RETURNING *`,
-      [data.category, data.difficulty, data.question_text, data.correct_answer, data.question_type, data.is_active, data.choice_a, data.choice_b, data.choice_c, data.choice_d, data.image_url, this.id]
-    );
+    // Selectively include the fields which are passed in the body
+    const fields = [];
+    const vals = [];
+    let param_num = 1
+
+    for (const [key,value] of Object.entries(data)) {
+        // Make sure it is an allowed field
+        if ([
+            "category", "difficulty", "question_text", "correct_answer",
+            "question_type", "is_active", "choice_a", "choice_b",
+            "choice_c", "choice_d", "image_url"
+        ].includes(key)) {
+            // Push name and value to build query later
+            fields.push(`${key} = $${param_num}`);
+            vals.push(value);
+            param_num++;
+        }
+    }
+    fields.push(`updated_at = NOW()`)
+    vals.push(this.id);
+
+
+    // Create query and values
+    const query = `
+        UPDATE questions
+        SET ${fields.join(", ")}
+        WHERE id = $${param_num}
+        RETURNING *
+    `;
+
+    // Execute query
+    const result = await db.query(query, vals);
+
+    // Return result
     return new Questions(result.rows[0]);
   }
 
