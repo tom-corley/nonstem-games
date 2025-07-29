@@ -3,7 +3,7 @@ const Questions = require('../models/Questions');
 const index = async (req, res) => {
   try {
     const questions = await Questions.getAll();
-    res.status(200).json({ data: questions });
+    res.status(200).json(questions);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -12,7 +12,7 @@ const index = async (req, res) => {
 const show = async (req, res) => {
   try {
     const question = await Questions.findById(parseInt(req.params.id));
-    res.status(200).json({ data: question });
+    res.status(200).json(question);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -31,7 +31,7 @@ const update = async (req, res) => {
   try {
     const question = await Questions.findById(parseInt(req.params.id));
     const updatedQuestion = await question.update(req.body);
-    res.status(200).json({ data: updatedQuestion });
+    res.status(200).json(updatedQuestion);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
