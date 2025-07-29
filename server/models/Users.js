@@ -1,5 +1,6 @@
 const db = require('../database/connect');
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 class User {
 
@@ -14,28 +15,70 @@ class User {
         this.is_admin = data.is_admin;
     }
 
+    sanitised() {
+        const {password_hash, ...safeData } = this;
+        return safeData;
+    }
+
     static async getOneById(id) {
-        const response = await db.query("SELECT * FROM user_account WHERE user_id = $1", [id]);
-        if (response.rows.length != 1) {
+        const response = await db.query("SELECT * FROM users WHERE id = $1", [id]);
+        if (response.rows.length !== 1) {
             throw new Error("Unable to locate user.");
         }
         return new User(response.rows[0]);
     }
 
     static async getOneByUsername(username) {
-        const response = await db.query("SELECT * FROM user_account WHERE username = $1", [username]);
-        if (response.rows.length != 1) {
+        const response = await db.query("SELECT * FROM users WHERE username = $1", [username]);
+        if (response.rows.length !== 1) {
             throw new Error("Unable to locate user.");
         }
         return new User(response.rows[0]);
     }
 
-    static async create(data) {
-        const { username, password_hash, isAdmin } = data;
-        let response = await db.query(
-            `INSERT INTO users (username, password_hash, is_admin) VALUES ($1, $2, $3) RETURNING user_id`,
-            [username, password_hash, isAdmin]
+    static async authenticate(username, password) {
+        // Fetch user
+        const user = await User.getOneByUsername(username)
+        if(!user) { throw new Error('No user with this username') }
+
+        // Compare passwords
+        const match = await bcrypt.compare(password, user.password_hash)
+        if (!match) {throw new Error('Incorrect Password')}
+
+        // Create token payload and sign token
+        const payload = {
+            id: user.id,
+            username: user.username,
+            is_admin: user.is_admin
+        }
+        const token = jwt.sign(
+            payload,
+            process.env.SECRET_TOKEN,
+            { expiresIn: '1h'}
         )
+
+        // Return token and safe user data
+        return {
+            token,
+            user: user.sanitised()
+        }
+    }
+
+
+    static async create(data) {
+        // Unpack object and encrypt password
+        const { username, password, is_admin } = data;
+        const salt = await bcrypt.genSalt(parseInt(process.env.BCRYPT_SALT_ROUNDS));
+        const password_hash = await bcrypt.hash(password, salt);
+
+        // Add user to database
+        const response = await db.query(
+            `INSERT INTO users (username, password_hash, is_admin) VALUES ($1, $2, $3) RETURNING *`,
+            [username, password_hash, is_admin]
+        );
+
+
+        return new User(response.rows[0]).sanitised();
     }
 
 }
