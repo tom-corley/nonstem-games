@@ -1,0 +1,5 @@
+@import './global.css';
+
+nav ul li {
+  color: var(--color-grey);
+}
