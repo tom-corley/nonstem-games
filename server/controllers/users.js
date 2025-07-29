@@ -1,50 +1,54 @@
-const Users = require('../models/Users');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-const index = async (req, res) => {
-  try {
-    const users = await Users.getAll();
-    res.status(200).json({ data: users });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+const User = require('../models/users');
 
-const show = async (req, res) => {
-  try {
-    const user = await Users.findById(parseInt(req.params.id));
-    res.status(200).json({ data: user });
-  } catch (error) {
-    res.status(404).json({ error: error.message });
-  }
-};
+async function register(req, res) {
+    try {
+      const data = req.body;
+  
+      // Generate a salt with a specific cost
+      const salt = await bcrypt.genSalt(parseInt(process.env.BCRYPT_SALT_ROUNDS));
+  
+      // Hash the password
+      data["password"] = await bcrypt.hash(data.password, salt);
+      console.log(data)
+      const result = await User.create(data);
+  
+      res.status(201).send(result);
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+}
 
-const create = async (req, res) => {
-  try {
-    const newUser = await Users.create(req.body);
-    res.status(201).json({ data: newUser });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
+async function login(req, res) {
+    const data = req.body;
+    try {
+      const user = await User.getOneByUsername(data.username);
+      if(!user) { throw new Error('No user with this username') }
+      const match = await bcrypt.compare(data.password, user.password);
+  
+      if (match) {
+        const payload = { username: user.username }
+        const sendToken = (err, token) => {
+            if(err){ throw new Error('Error in token generation') }
+            res.status(200).json({
+                success: true,
+                token: token,
+            });
+        }
 
-const update = async (req, res) => {
-  try {
-    const user = await Users.findById(parseInt(req.params.id));
-    const updatedUser = await user.update(req.body);
-    res.status(200).json({ data: updatedUser });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
+        jwt.sign(payload, process.env.SECRET_TOKEN, { expiresIn: 3600 }, sendToken);
 
-const destroy = async (req, res) => {
-  try {
-    const user = await Users.findById(parseInt(req.params.id));
-    await user.destroy();
-    res.status(204).end();
-  } catch (error) {
-    res.status(404).json({ error: error.message });
-  }
-};
+      } else {
+        throw new Error('User could not be authenticated')  
+      }
+    } catch (err) {
+      res.status(401).json({ error: err.message });
+    }
+}
 
-module.exports = { index, show, create, update, destroy };
+
+module.exports = {
+    register, login
+}                        
