@@ -1,20 +1,26 @@
 const Games = require('../models/Games');
 
-const newGame = async (req, res) => {
+// POST /games/start
+const startGame = async (req, res) => {
   try {
-    const newQuestion = await Questions.create(req.body);
-    res.status(201).json({ data: newQuestion });
+    const { user_id, category, num_questions } = req.body;
+    const result = await Games.start(user_id, category, num_questions);
+    res.status(201).json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-const saveResults = async (req, res) => {
+// PATCH /games/:game_id/submit
+const submitResults = async (req, res) => {
   try {
-    const question = await Questions.findById(parseInt(req.params.id));
-    const updatedQuestion = await question.update(req.body);
-    res.status(200).json(updatedQuestion);
+    const game_id = parseInt(req.params.game_id);
+    const { results } = req.body;
+    const result = await Games.submitResults(game_id, results);
+    res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
+module.exports = { startGame, submitResults };

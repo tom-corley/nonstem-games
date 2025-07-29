@@ -23,6 +23,11 @@ class Questions {
     return result.rows.map(q => new Questions(q));
   }
 
+  static async getQuizQuestions(category, num_of_res) {
+    const result = await db.query('SELECT * FROM questions where category = $1 LIMIT $2', [category, num_of_res])
+    return results.rows.map(q => new Questions(q));
+  }
+
   static async findById(id) {
     const result = await db.query('SELECT * FROM questions WHERE id = $1', [id]);
     if (result.rows.length === 0) throw new Error('Question not found');

@@ -58,7 +58,7 @@ CREATE TABLE game_questions (
     question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE,
     question_order INTEGER,
     was_correct BOOLEAN,
-    category VARCHAR(100),  -- Category at time of play (can be redundant but useful for audit/history)
+    category VARCHAR(100),  
 
     PRIMARY KEY (game_id, question_id)
 );
