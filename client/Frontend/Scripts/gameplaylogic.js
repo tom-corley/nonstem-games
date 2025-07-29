@@ -46,5 +46,5 @@ function setupSubmission(questions) {
   });
 }
 
-// Init the quiz when page loads
+// Initialize the quiz when page loads
 document.addEventListener("DOMContentLoaded", loadQuestions);
