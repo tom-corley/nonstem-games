@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GamePlay Page</title>
-  <link rel="stylesheet" href="./Styles/gameplay.css" />
+  <link rel="stylesheet" href="../Styles/gameplay.css" />
 </head>
 <body>
   <section>
@@ -14,7 +14,7 @@
               <h3>Quiz Grad</h3>
           </div>
           <div id='navbar-img'>
-              <img src="./Assets/quizlogo.png" alt="QuizLogo" /> 
+              <img src="../Assets/quizlogo.png" alt="QuizLogo" /> 
           </div>
           <div id="navbar-links">
               <a href="index.html">Home</a>
@@ -22,13 +22,21 @@
           </div>
     </div>
   </section>
+  <section id="game-start">
 
+  </section>
+  <div id="start-game">
+      <button id="start-btn">Start Game</button>
+      <div id="timer">Time: 0s</div>
+  </div>
+  
   <section id="game-container">
+    
     <form id="quiz-form"></form>
     <button id="submit-btn">Submit Answers</button>
     <div id="results"></div>
   </section>
 
-  <script src="./Scripts/gameplaylogic.js" defer></script>
+  <script src="../Scripts/gameplaylogic.js" defer></script>
 </body>
 </html>

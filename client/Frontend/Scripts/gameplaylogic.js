@@ -1,7 +1,72 @@
+let questions = [];
+let startTime, timerInterval;
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadQuestions();
+
+  document.getElementById("start-btn").addEventListener("click", () => {
+    startTime = Date.now();
+
+    timerInterval = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      document.getElementById("timer").textContent = `Time: ${elapsed}s`;
+    }, 1000);
+  });
+
+  document.getElementById("submit-btn").addEventListener("click", async () => {
+    const endTime = Date.now();
+    clearInterval(timerInterval);
+
+    const timeTaken = Math.floor((endTime - startTime) / 1000);
+
+    const userAnswers = {};
+    questions.forEach((q) => {
+      const selected = document.querySelector(`input[name="question-${q.id}"]:checked`);
+      userAnswers[q.id] = selected ? selected.value : null;
+    });
+
+    try {
+      const answersRes = await fetch("/api/correct-answers");
+      const correctAnswers = await answersRes.json();
+
+      let score = 0;
+      questions.forEach((q) => {
+        if (userAnswers[q.id] === correctAnswers[q.id]) score++;
+      });
+
+      const percentage = Math.round((score / questions.length) * 100);
+      const date = new Date().toLocaleDateString();
+
+      const resultPayload = {
+        date,
+        timeTaken,
+        percentage,
+        score,
+        totalQuestions: questions.length,
+        userAnswers,
+      };
+
+      await fetch("/api/save-results", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(resultPayload),
+      });
+
+      document.getElementById("results").innerText =
+        `You scored ${score}/${questions.length} (${percentage}%)`;
+
+      window.location.href = "geography-game-results.html";
+    } catch (error) {
+      console.error("Submission failed:", error);
+      document.getElementById("results").innerText = "There was an error submitting your results.";
+    }
+  });
+});
+
 async function loadQuestions() {
   try {
-    const res = await fetch('/api/questions');
-    const questions = await res.json();
+    const res = await fetch("/api/questions");
+    questions = await res.json();
 
     const form = document.getElementById("quiz-form");
     form.innerHTML = ""; // Clear any existing content
@@ -22,29 +87,8 @@ async function loadQuestions() {
 
       form.appendChild(block);
     });
-
-    setupSubmission(questions);
   } catch (error) {
     console.error("Error loading questions:", error);
     document.getElementById("results").innerText = "Could not load questions. Please try again.";
   }
 }
-
-function setupSubmission(questions) {
-  const btn = document.getElementById("submit-btn");
-  btn.addEventListener("click", () => {
-    let score = 0;
-    questions.forEach((q) => {
-      const selected = document.querySelector(`input[name="question-${q.id}"]:checked`);
-      if (selected && selected.value === q.answer) {
-        score++;
-      }
-    });
-
-    const percentage = Math.round((score / questions.length) * 100);
-    document.getElementById("results").innerText = `You scored ${score}/${questions.length} (${percentage}%)`;
-  });
-}
-
-// Initialize the quiz when page loads
-document.addEventListener("DOMContentLoaded", loadQuestions);
