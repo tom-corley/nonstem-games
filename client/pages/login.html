@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <link rel="stylesheet" href="../styles/login.css" />
   <script src="../scripts/login.js" defer></script>
 </head>
+
 <body>
   <header class="p-[10px] border-b border-gray-300">
     <nav class="flex items-center">
@@ -24,21 +26,31 @@
     <div class="p-5">
       <h2 class="font-semibold text-[20px]">Earth IQ</h2>
       <p class="font-normal text-[12px]"">Welcome back</p>
-      <p class="font-normal text-[12px]">Please login or signup to your account</p>
-      <div class="w-full max-w-sm min-w-[200px] mt-10">
-        <input style="color:var(--color-grey);" class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border border-l-2 px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" placeholder="Username" />
-      </div>
-       <div class="w-full max-w-sm min-w-[200px] mt-5">
-        <input style="color:var(--color-grey);" class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border border-l-2 px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" placeholder="Password" />
-      </div>
-      <button style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white text-[7px] p-[7px] mt-[20px] w-[60px]" type="button">Login</button>
+      <p class=" font-normal text-[12px]">Please login or signup to your account</p>
+      <form id="login-form">
+        <div class="w-full max-w-sm min-w-[200px] mt-10">
+          <input style="color:var(--color-grey);"
+            class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border border-l-2 px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow"
+            placeholder="Username" />
+        </div>
+        <div class="w-full max-w-sm min-w-[200px] mt-5">
+          <input style="color:var(--color-grey);"
+            class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border border-l-2 px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow"
+            placeholder="Password" />
+        </div>
+        <button style="background-color:var(--color-yellow);"
+          class="border-1 rounded-sm text-white text-[7px] p-[7px] mt-[20px] w-[60px]" type="submit">Login</button>
+        <div id="login-message" style="margin-top:10px; min-height:1.5em;"></div>
+      </form>
       <div class="flex justify-between mt-[20px]">
         <p style="color:var(--color-grey);" class="font-bold text-[14px] mt-[10px]">New Here?</p>
-        <button style="color:var(--color-yellow);" class="border-1 rounded-xs text-white text-[7px] p-[4px] shadow-lg mt-[5px] w-[60px]" type="button">Create Account</button>
+        <button style="color:var(--color-yellow);"
+          class="border-1 rounded-xs text-white text-[7px] p-[4px] shadow-lg mt-[5px] w-[60px]" type="button">Create
+          Account</button>
       </div>
     </div>
     <div>
-      <img class="w-[400px]"src="../assets/login_group.png" src="group image"/>
+      <img class="w-[400px]" src="../assets/login_group.png" src="group image" />
     </div>
   </main>
   <footer class="border-t-1 flex justify-around pt-[6px] pb-[3px]">
@@ -46,8 +58,11 @@
       <p style="color:var(--color-yellow);" class="text-xs font-bold">Earth IQ</p>
       <p style="color:var(--color-grey);" class="text-xs  text-[7px]">A Fun Quiz App</p>
     </div>
-    <input style ="color: var(--color-grey);" class="border-1 text-[7px] p-1 rounded-sm w-[150px] h-[30px] relative" type="text" placeholder="Enter your email" />
-    <button style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white text-[7px] p-[1px] mt-[5px] w-[70px] h-[20px] absolute right-[391px]" type="button">Subscribe</button>
+    <input style="color: var(--color-grey);" class="border-1 text-[7px] p-1 rounded-sm w-[150px] h-[30px] relative"
+      type="text" placeholder="Enter your email" />
+    <button style="background-color:var(--color-yellow);"
+      class="border-1 rounded-sm text-white text-[7px] p-[1px] mt-[5px] w-[70px] h-[20px] absolute right-[391px]"
+      type="button">Subscribe</button>
     <div style="color:var(--color-grey);" class="flex text-[10px] font-bold justify-between">
       <p class="mr-[8px]">About</p>
       <p class="mr-[8px]">FAQ</p>
@@ -60,4 +75,5 @@
     </div>
   </footer>
 </body>
+
 </html>
