@@ -1,6 +1,6 @@
 # Earth IQ App – Stakeholder & Solutions Analysis
 
-![Earth IQ Logo](./client/assests/logo.jpg)
+![Earth IQ Logo](./client/assets/logo.jpg)
 
 ## Problem Statement
 
@@ -10,7 +10,7 @@ Students at the Hive group of secondary schools are struggling to engage with no
 
 Visual stakeholder analysis based on influence vs. availability:
 
-![Stakeholder Analysis Diagram](./client/assests/logo.jpg)
+![Stakeholder Analysis Diagram](./client/assets/stakeholder-diagram.png)
 
 | Stakeholder              | Quadrant         | Justification                                                                 |
 |--------------------------|------------------|-------------------------------------------------------------------------------|
@@ -46,7 +46,7 @@ Visual stakeholder analysis based on influence vs. availability:
 
 We have identified five major risks to our project. These have been scored by severity and probability, and mitigation strategies have been planned that align with our MVP focus, security needs, and delivery timeline.
 
-![Risk Matrix](./client/assests/logo.jpg)
+![Risk Matrix](./client/assets/risk-matrix.png)
 
 | Risk                         | Severity     | Probability   | Score | Justification                                                                 |
 |------------------------------|--------------|----------------|--------|-------------------------------------------------------------------------------|
