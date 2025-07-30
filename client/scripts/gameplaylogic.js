@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         userAnswers,
       };
 
-      await fetch("/api/save-results", {
+      await fetch("http://localhost:3000/questions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(resultPayload),
@@ -65,11 +65,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function loadQuestions() {
   try {
-    const res = await fetch("/api/questions");
-    questions = await res.json();
+    const res = await fetch("http://localhost:3000/questions");
+    const data = await res.json();
+
+    // Convert to unified structure with `options`
+    questions = data.map((q) => ({
+      ...q,
+      text: q.question_text,
+      options: [q.choice_a, q.choice_b, q.choice_c, q.choice_d],
+    }));
+
+    console.log("Parsed questions:", questions);
 
     const form = document.getElementById("quiz-form");
-    form.innerHTML = ""; // Clear any existing content
+    form.innerHTML = "";
 
     questions.forEach((q) => {
       const block = document.createElement("div");
@@ -89,6 +98,8 @@ async function loadQuestions() {
     });
   } catch (error) {
     console.error("Error loading questions:", error);
-    document.getElementById("results").innerText = "Could not load questions. Please try again.";
+    document.getElementById("results").innerText =
+      "Could not load questions. Please try again.";
   }
 }
+
