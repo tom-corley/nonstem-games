@@ -1,4 +1,4 @@
-const { storeToken } = require('./helpers/helpers.js');
+import { storeToken } from './helpers/helpers.js';
 
 // DOM elements
 const loginForm = document.getElementById('login-form');
@@ -11,12 +11,15 @@ if (loginForm) {
 
 async function handleLogin(e) {
   e.preventDefault();
+  console.log("Login form submitted");
 
   // Get input values
   const usernameInput = document.getElementById('username');
   const passwordInput = document.getElementById('password');
   const username = usernameInput ? usernameInput.value : '';
   const password = passwordInput ? passwordInput.value : '';
+
+  console.log("Username:", username, "Password:", password ? "***" : "empty");
 
   // Validate
   if (!username || !password) {
@@ -25,26 +28,35 @@ async function handleLogin(e) {
   }
 
   try {
+    console.log("Attempting login...");
     // Attempt login and redirect to profile page if successful
     const result = await loginUser(username, password);
-    window.location.href = '/index.html';
+    console.log("Login successful, redirecting to index.html");
+    window.location.href = '../index.html';
   } catch (error) {
+    console.error("Login error:", error);
     showMessage(error.message || 'Login failed. Please try again.', 'red');
   }
 }
 
 // Core login logic
 async function loginUser(username, password) {
+  console.log("Starting login process...");
+  
   const loginRes = await fetch('http://localhost:3000/users/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password }),
   });
+  
   if (!loginRes.ok) {
     const error = await loginRes.json();
+    console.error("Login failed:", error);
     throw new Error(error.error || 'Login failed');
   }
+
   const loginData = await loginRes.json();
+  console.log("Login successful, storing token...");
   storeToken(loginData.token);
   return loginData;
 }
@@ -62,4 +74,4 @@ function showMessage(msg, color) {
   }
 }
 
-module.exports = loginUser;
+export { loginUser };
