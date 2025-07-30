@@ -130,8 +130,8 @@
   "message": "User deleted successfully"
 }
 ---
-
-## Games
+```
+### Games
 
 ### POST /games/start (auth required)
 - **Headers:**

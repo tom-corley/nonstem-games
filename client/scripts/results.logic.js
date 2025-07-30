@@ -3,7 +3,7 @@
 window.addEventListener("DOMContentLoaded", async () => {
   try {
     // Change Line 4 for API
-    const res = await fetch("http://localhost:3000/questions");
+    const res = await fetch("http://localhost:3000/game");
     const result = await res.json();
 
     const table = document.querySelector("#table-div table");

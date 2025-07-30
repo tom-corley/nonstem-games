@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   document.getElementById("submit-btn").addEventListener("click", async () => {
+    // Get auth token from localStorage
+    const token = localStorage.getItem("token");
     const endTime = Date.now();
     clearInterval(timerInterval);
 
@@ -34,26 +36,35 @@ document.addEventListener("DOMContentLoaded", async () => {
       const percentage = Math.round((score / questions.length) * 100);
       const date = new Date().toLocaleDateString();
 
-      // Prepare payload for games table
-      const startedAt = new Date(startTime).toISOString();
-      const endedAt = new Date(endTime).toISOString();
+      // Step 1: Start the game
       const category = questions.length > 0 ? questions[0].category : "Geography";
       const userId = 1; // TODO: Replace with actual user ID from session/auth
+      const numQuestions = questions.length;
 
-      const gamePayload = {
-        user_id: userId,
-        score,
-        started_at: startedAt,
-        ended_at: endedAt,
-        total_questions: questions.length,
-        correct_answers: score,
-        category
-      };
-
-      await fetch("http://localhost:3000/start", {
+      const startRes = await fetch("http://localhost:3000/games/start", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(gamePayload),
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ user_id: userId, category, num_questions: numQuestions }),
+      });
+      const startData = await startRes.json();
+      const gameId = startData.game.id;
+
+      // Step 2: Prepare results for PATCH
+      const resultsArray = questions.map((q) => ({
+        question_id: q.id,
+        was_correct: userAnswers[q.id] === q.correct_answer
+      }));
+
+      await fetch(`http://localhost:3000/games/${gameId}/submit`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(resultsArray),
       });
 
       document.getElementById("results").innerText =
