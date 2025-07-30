@@ -1,0 +1,18 @@
+@import './global.css';
+
+* {
+ font-family: var(--font-body);
+}
+
+nav ul li {
+  color: var(--color-grey);
+}
+
+.left-banner {
+  border-color: var(--color-yellow);
+  border-radius: 10px;
+}
+
+footer {
+   border-color: var(--color-light-grey);
+}
