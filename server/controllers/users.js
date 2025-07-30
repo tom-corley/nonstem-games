@@ -27,7 +27,29 @@ async function login(req, res) {
   }
 }
 
+async function fetchUser(req, res) {
+  try {
+    const username = req.params.id
+    if (!username) throw new Error("Error passing in user_id");
+    const user = await User.cleanGetOneById(username)
+    res.status(200).send(user)
+  } catch(err) {
+    res.status(500).json({error: err.message})
+  }
+}
+
+async function update(req, res) {
+  try {
+    const {username: newUsername } = req.body
+    const userId = req.user.id
+    const updatedUser = await User.updateUsername(userId, newUsername)
+    res.status(200).send(result)
+  } catch(err) {
+    res.status(500).json({error: err.message})
+  }
+}
+
 
 module.exports = {
-    register, login
+    register, login, fetchUser, update
 }                        
