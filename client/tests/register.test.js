@@ -31,4 +31,21 @@ describe('registerUser', () => {
     expect(result.token).toBe('abc123');
   });
 
+  // Test error handling when registration fails
+  it('throws on registration error', async () => {
+    // Mock failed registration response
+    fetch.mockResolvedValueOnce({ ok: false, json: async () => ({ error: 'fail' }) });
+    // Check that the function throws the correct error
+    await expect(registerUser('bad', 'bad')).rejects.toThrow('fail');
+  });
+
+  // Test error handling when login fails after successful registration
+  it('throws on login error', async () => {
+    // Mock successful registration but failed login
+    fetch
+      .mockResolvedValueOnce({ ok: true, json: async () => ({ user: { username: 'test' } }) }) // register
+      .mockResolvedValueOnce({ ok: false, json: async () => ({ error: 'login fail' }) }); // login
+    // Check that the function throws the correct error
+    await expect(registerUser('test', 'pass')).rejects.toThrow('login fail');
+  });
 });
