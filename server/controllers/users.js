@@ -1,5 +1,6 @@
 const User = require('../models/users');
 
+// POST /users/register
 async function register(req, res) {
     try {
       // Extract fields and create user
@@ -17,6 +18,7 @@ async function register(req, res) {
     }
 }
 
+// POST /users/login
 async function login(req, res) {
   try {
     const { username, password } = req.body
@@ -27,6 +29,7 @@ async function login(req, res) {
   }
 }
 
+// GET /users/:id
 async function fetchUser(req, res) {
   try {
     const username = req.params.id
@@ -38,18 +41,40 @@ async function fetchUser(req, res) {
   }
 }
 
+// PATCH /users/update
 async function update(req, res) {
   try {
     const {username: newUsername } = req.body
     const userId = req.user.id
     const updatedUser = await User.updateUsername(userId, newUsername)
+    res.status(200).send(updatedUser)
+  } catch(err) {
+    res.status(500).json({error: err.message})
+  }
+}
+
+// DELETE /users/delete
+async function destroy(req, res) {
+  try {
+    const userId = req.user.id
+    const result = await User.deleteUser(userId)
+    res.status(204).send(results)
+  } catch(err) {
+    res.status(500).json({error: err.message})
+  }
+}
+
+// GET /users/results
+async function results(req, res) {
+  try {
+    const userId = req.user.id
+    const result = await User.getUserResults(userId)
     res.status(200).send(result)
   } catch(err) {
     res.status(500).json({error: err.message})
   }
 }
 
-
 module.exports = {
-    register, login, fetchUser, update
+    register, login, fetchUser, update, destroy, results
 }                        
