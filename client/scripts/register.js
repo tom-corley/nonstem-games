@@ -4,7 +4,7 @@ const { storeToken } = require('./helpers/helpers.js');
 const registerForm = document.querySelector("main form");
 const messageDiv = document.getElementById("register-message");
 
-
+// Listen for form submission
 if (registerForm) {
   registerForm.addEventListener("submit", handleRegister);
 }
@@ -25,12 +25,9 @@ async function handleRegister(e) {
   }
 
   try {
-    // Register and login
+    // Attempt register and redirect to profile page if successful
     const result = await registerUser(username, password);
-    showMessage("Registration successful! You are now logged in.", "green");
-    setTimeout(() => {
-      window.location.href = "/profile.html";
-    }, 1500);
+    window.location.href = "/profile.html";
   } catch (error) {
     showMessage(error.message || "Registration failed. Please try again.", "red");
   }
