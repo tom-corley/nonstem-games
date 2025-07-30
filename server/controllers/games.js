@@ -15,7 +15,7 @@ const startGame = async (req, res) => {
 const submitResults = async (req, res) => {
   try {
     const game_id = parseInt(req.params.game_id);
-    const { results } = req.body;
+    const results = req.body;
     const result = await Games.submitResults(game_id, results);
     res.status(200).json(result);
   } catch (error) {
