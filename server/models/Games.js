@@ -61,7 +61,7 @@ class Games {
       `UPDATE games SET correct_answers = $1, score = $1, ended_at = NOW() WHERE id = $2 RETURNING *`,
       [total_correct, game_id]
     );
-    return updated_game;
+    return new Games(updated_game.rows[0]);
   }
 
 }
