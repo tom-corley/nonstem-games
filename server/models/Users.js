@@ -32,6 +32,65 @@ class User {
         return (await User.getOneById(id)).sanitised()
     }
 
+    static async getUserResults(id) {
+        // 1. Fetch all games for the user from games table
+        const gamesRes = await db.query(
+            'SELECT * FROM games WHERE user_id = $1 ORDER BY started_at DESC',
+            [id]
+        );
+        const games = gamesRes.rows;
+
+        // 2. For each game, fetch game_questions and flatten question fields
+        const results = [];
+        for (const game of games) {
+            // Fetch game_questions for this game
+            const games_questions = await db.query(
+                'SELECT * FROM game_questions WHERE game_id = $1 ORDER BY question_order',
+                [game.id]
+            );
+
+            // Create questions object which aggregates data from game_questions and questions
+            const questions = [];
+            for (const gq of games_questions.rows) {
+                // Fetch question from questions table
+                const qRes = await db.query(
+                    'SELECT id, category, difficulty, question_text, correct_answer, question_type, choice_a, choice_b, choice_c, choice_d, image_url FROM questions WHERE id = $1',
+                    [gq.question_id]
+                );
+                const q = qRes.rows[0] || {};
+
+                // Create object for each question
+                questions.push({
+                    question_id: gq.question_id,
+                    was_correct: gq.was_correct,
+                    question_order: gq.question_order,
+                    // flatten question fields
+                    category: q.category,
+                    difficulty: q.difficulty,
+                    question_text: q.question_text,
+                    correct_answer: q.correct_answer,
+                    question_type: q.question_type,
+                    choice_a: q.choice_a,
+                    choice_b: q.choice_b,
+                    choice_c: q.choice_c,
+                    choice_d: q.choice_d,
+                    image_url: q.image_url
+                });
+            }
+            results.push({
+                user_id: game.id,
+                started_at: game.started_at,
+                ended_at: game.ended_at,
+                category: game.category,
+                total_questions: game.total_questions,
+                score: game.score,
+                correct_answers: game.correct_answers,
+                questions
+            });
+        }
+        return results;
+    }
+
     static async getOneByUsername(username) {
         const response = await db.query("SELECT * FROM users WHERE username = $1", [username]);
         if (response.rows.length !== 1) {
@@ -92,6 +151,15 @@ class User {
         );
         if (response.rows.length === 0) throw new Error('User not found');
         return new User(response.rows[0]).sanitised();
+    }
+
+    static async deleteUser(user_id) {
+        const response = await db.query(
+            'DELETE FROM users WHERE id = $1 RETURNING *',
+            [user_id]
+        )
+        if (response.rows.length === 0) throw new Error('User not found')
+        return {message: "User deleted successfully."}
     }
 
 }

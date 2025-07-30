@@ -47,11 +47,97 @@
 }
 ```
 
+### PATCH users/update (auth required)
+- **Headers:**
+  - Authorization: Bearer <token>
+- **Request Body:**
+```json
+{
+  "username": "newUsername"
+}
+```
+- **Response:**
+```json
+{
+  "id": 1,
+  "username": "newUsername",
+  "join_date": "2025-07-29T12:00:00.000Z",
+  "all_time_score": 100,
+  "games_played": 10,
+  "high_score": 50,
+  "is_admin": false
+}
+```
+
+### GET users/:id
+- **Headers:**
+  - Authorization: Bearer <token>
+- **Response:**
+```json
+{
+  "id": 1,
+  "username": "exampleUser",
+  "join_date": "2025-07-29T12:00:00.000Z",
+  "all_time_score": 0,
+  "games_played": 0,
+  "high_score": 0,
+  "is_admin": false
+}
+---
+
+### GET users/results (auth required)
+- **Headers:**
+  - Authorization: Bearer <token>
+- **Response:**
+```json
+[
+  {
+    "id": 1,
+    "started_at": "2025-07-29T12:00:00.000Z",
+    "ended_at": "2025-07-29T12:10:00.000Z",
+    "category": "General Knowledge",
+    "total_questions": 5,
+    "score": 3,
+    "correct_answers": 3,
+    "questions": [
+      {
+        "question_id": 1,
+        "was_correct": true,
+        "question_order": 1,
+        "category": "General Knowledge",
+        "difficulty": 2,
+        "question_text": "What is the capital of France?",
+        "correct_answer": "Paris",
+        "question_type": "short_answer",
+        "choice_a": "London",
+        "choice_b": "Berlin",
+        "choice_c": "Madrid",
+        "choice_d": "Paris",
+        "image_url": null
+      }
+      // ...more question objects
+    ]
+  }
+  // ...more game objects
+]
+```
+
+### DELETE users/delete
+- **Headers:**
+  - Authorization: Bearer <token>
+- **Response:**
+```json
+{
+  "message": "User deleted successfully"
+}
+```
 ---
 
 ## Games
 
-### POST /games/start
+### POST /games/start (auth required)
+- **Headers:**
+  - Authorization: Bearer <token>
 - **Request Body:**
 ```json
 {
@@ -84,7 +170,9 @@
 }
 ```
 
-### PATCH /:game_id/submit
+### PATCH /:game_id/submit (auth required)
+- **Headers:**
+  - Authorization: Bearer <token>
 - **Request Body:**
 ```json
 [
@@ -140,14 +228,12 @@
 ```
 
 ### POST /questions/
-- **Request Body:**
 ```json
 {
   "category": "General Knowledge",
   "difficulty": 2,
   "question_text": "What is the capital of France?",
   "correct_answer": "Paris"
-  // ...other fields
 }
 ```
 - **Response:**
@@ -160,7 +246,6 @@
   "correct_answer": "Paris"
   // ...other fields
 }
-```
 
 ### PATCH /questions/:id
 - **Request Body:**
