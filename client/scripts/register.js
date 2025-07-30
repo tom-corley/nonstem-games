@@ -27,7 +27,7 @@ async function handleRegister(e) {
   try {
     // Attempt register and redirect to profile page if successful
     const result = await registerUser(username, password);
-    window.location.href = "/profile.html";
+    window.location.href = "/index.html";
   } catch (error) {
     showMessage(error.message || "Registration failed. Please try again.", "red");
   }
@@ -71,7 +71,7 @@ function showMessage(msg, color) {
     setTimeout(() => {
       messageDiv.textContent = "";
       messageDiv.style.display = "none";
-    }, 4000);
+    }, 5000);
   }
 }
 

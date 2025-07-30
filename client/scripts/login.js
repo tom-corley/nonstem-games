@@ -27,7 +27,7 @@ async function handleLogin(e) {
   try {
     // Attempt login and redirect to profile page if successful
     const result = await loginUser(username, password);
-    window.location.href = '/profile.html';
+    window.location.href = '/index.html';
   } catch (error) {
     showMessage(error.message || 'Login failed. Please try again.', 'red');
   }
@@ -58,7 +58,7 @@ function showMessage(msg, color) {
     setTimeout(() => {
       messageDiv.textContent = '';
       messageDiv.style.display = 'none';
-    }, 4000);
+    }, 5000);
   }
 }
 
