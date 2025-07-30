@@ -1,20 +1,13 @@
-
 const { storeToken } = require('./helpers/helpers.js');
 
 // DOM elements
-const registerForm = document.querySelector("main form"); // If you add a <form> tag
-const registerButton = document.getElementById("register-button");
+const registerForm = document.querySelector("main form");
 const messageDiv = document.getElementById("register-message");
 
-// If you don't have a <form>, use the button event
-if (registerButton) {
-  registerButton.addEventListener("click", handleRegister);
-}
 
-// If you add a <form> element, you can use this instead:
-// if (registerForm) {
-//   registerForm.addEventListener("submit", handleRegister);
-// }
+if (registerForm) {
+  registerForm.addEventListener("submit", handleRegister);
+}
 
 async function handleRegister(e) {
   e.preventDefault();
