@@ -56,12 +56,34 @@ class Games {
       if (r.was_correct) total_correct++;
     }
 
+    // Calculate percentage score (1-100)
+    let percentage = Math.round((total_correct / results.length) * 100);
+
     // 2. Updating game record on games table
-    const updated_game = await db.query(
-      `UPDATE games SET correct_answers = $1, score = $1, ended_at = NOW() WHERE id = $2 RETURNING *`,
-      [total_correct, game_id]
+    const updated_game_res = await db.query(
+      `UPDATE games SET correct_answers = $1, score = $2, ended_at = NOW() WHERE id = $3 RETURNING *`,
+      [total_correct, percentage, game_id]
     );
-    return new Games(updated_game.rows[0]);
+    const updated_game = updated_game_res.rows[0];
+
+    // Fetch user to get current high_score
+    const userRes = await db.query(
+      `SELECT high_score FROM users WHERE id = $1`,
+      [updated_game.user_id]
+    );
+    const currentHigh = userRes.rows[0].high_score;
+    let newHigh = currentHigh;
+    if (percentage > currentHigh) {
+      newHigh = percentage;
+    }
+
+    // 4. Updating user record on users table
+    await db.query(
+      `UPDATE users SET all_time_score=all_time_score+$1, games_played=games_played+1, high_score=$2 WHERE id = $3 RETURNING *`,
+      [total_correct, newHigh, updated_game.user_id]
+    );
+
+    return new Games(updated_game);
   }
 
 }
