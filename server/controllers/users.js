@@ -1,54 +1,80 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-
 const User = require('../models/users');
 
+// POST /users/register
 async function register(req, res) {
     try {
-      const data = req.body;
-  
-      // Generate a salt with a specific cost
-      const salt = await bcrypt.genSalt(parseInt(process.env.BCRYPT_SALT_ROUNDS));
-  
-      // Hash the password
-      data["password"] = await bcrypt.hash(data.password, salt);
-      console.log(data)
-      const result = await User.create(data);
-  
-      res.status(201).send(result);
+      // Extract fields and create user
+      const { username, password } = req.body;
+      const new_user = await User.create({
+        username,
+        password,
+        is_admin: false
+      });
+
+      // Send user object, sanitised by model
+      res.status(201).send(new_user);
     } catch (err) {
-      res.status(400).json({ error: err.message });
+      res.status(500).json({ error: err.message });
     }
 }
 
+// POST /users/login
 async function login(req, res) {
-    const data = req.body;
-    try {
-      const user = await User.getOneByUsername(data.username);
-      if(!user) { throw new Error('No user with this username') }
-      const match = await bcrypt.compare(data.password, user.password);
-  
-      if (match) {
-        const payload = { username: user.username }
-        const sendToken = (err, token) => {
-            if(err){ throw new Error('Error in token generation') }
-            res.status(200).json({
-                success: true,
-                token: token,
-            });
-        }
-
-        jwt.sign(payload, process.env.SECRET_TOKEN, { expiresIn: 3600 }, sendToken);
-
-      } else {
-        throw new Error('User could not be authenticated')  
-      }
-    } catch (err) {
-      res.status(401).json({ error: err.message });
-    }
+  try {
+    const { username, password } = req.body
+    result = await User.authenticate(username, password)
+    res.status(200).send(result)
+  } catch(err) {
+    res.status(500).json({error: err.message})
+  }
 }
 
+// GET /users/:id
+async function fetchUser(req, res) {
+  try {
+    const username = req.params.id
+    if (!username) throw new Error("Error passing in user_id");
+    const user = await User.cleanGetOneById(username)
+    res.status(200).send(user)
+  } catch(err) {
+    res.status(500).json({error: err.message})
+  }
+}
+
+// PATCH /users/update
+async function update(req, res) {
+  try {
+    const {username: newUsername } = req.body
+    const userId = req.user.id
+    const updatedUser = await User.updateUsername(userId, newUsername)
+    res.status(200).send(updatedUser)
+  } catch(err) {
+    res.status(500).json({error: err.message})
+  }
+}
+
+// DELETE /users/delete
+async function destroy(req, res) {
+  try {
+    const userId = req.user.id
+    const result = await User.deleteUser(userId)
+    res.status(204).send(results)
+  } catch(err) {
+    res.status(500).json({error: err.message})
+  }
+}
+
+// GET /users/results
+async function results(req, res) {
+  try {
+    const userId = req.user.id
+    const result = await User.getUserResults(userId)
+    res.status(200).send(result)
+  } catch(err) {
+    res.status(500).json({error: err.message})
+  }
+}
 
 module.exports = {
-    register, login
+    register, login, fetchUser, update, destroy, results
 }                        
