@@ -94,6 +94,15 @@ class User {
         return new User(response.rows[0]).sanitised();
     }
 
+    static async deleteUser(user_id) {
+        const response = await db.query(
+            'DELETE FROM users WHERE id = $1 RETURNING *',
+            [user_id]
+        )
+        if (response.rows.length === 0) throw new Error('User not found')
+        return {message: "User deleted successfully."}
+    }
+
 }
 
 module.exports = User;

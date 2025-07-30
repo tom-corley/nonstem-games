@@ -49,7 +49,16 @@ async function update(req, res) {
   }
 }
 
+async function destroy(req, res) {
+  try {
+    const userId = req.user.id
+    const result = await User.deleteUser(userId)
+    res.status(204).send(results)
+  } catch(err) {
+    res.status(500).json({error: err.message})
+  }
+}
 
 module.exports = {
-    register, login, fetchUser, update
+    register, login, fetchUser, update, destroy
 }                        
