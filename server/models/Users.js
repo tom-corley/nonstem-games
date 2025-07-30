@@ -28,6 +28,10 @@ class User {
         return new User(response.rows[0]);
     }
 
+    static async cleanGetOneById(id) {
+        return (await User.getOneById(id)).sanitised()
+    }
+
     static async getOneByUsername(username) {
         const response = await db.query("SELECT * FROM users WHERE username = $1", [username]);
         if (response.rows.length !== 1) {
@@ -78,6 +82,15 @@ class User {
         );
 
 
+        return new User(response.rows[0]).sanitised();
+    }
+
+    static async updateUsername(id, newUsername) {
+        const response = await db.query(
+            'UPDATE users SET username = $1 WHERE id = $2 RETURNING *',
+            [newUsername, id]
+        );
+        if (response.rows.length === 0) throw new Error('User not found');
         return new User(response.rows[0]).sanitised();
     }
 
