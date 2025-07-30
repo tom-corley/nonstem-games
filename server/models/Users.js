@@ -78,7 +78,7 @@ class User {
                 });
             }
             results.push({
-                id: game.id,
+                user_id: game.id,
                 started_at: game.started_at,
                 ended_at: game.ended_at,
                 category: game.category,
