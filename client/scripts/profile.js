@@ -1,16 +1,16 @@
-document.addEventListener("DOMContentLoaded", async () => {;
+document.addEventListener("DOMContentLoaded", async () => {
 
-  const response = await fetch("/users/login");
-
-  if (!response.ok) {
-    document.getElementById("profile").innerText = "Not a Profile"
-    return;
-  }
+  const response = await fetch("http://localhost:3000/users/1");
 
   const user = await response.json();
+  console.log(user);
   document.getElementById("profile").innerHTML = `
-    <p><strong>Username:</strong> ${user.username}</p>
-    <p><strong>Email:</strong> ${user.email}</p>
-    <p><strong>Full Name:</strong> ${user.full_name}</p>
-  `;
+    <p><strong>Username:  </strong> ${user.username}</p>
+    <p><strong>Join Date:  </strong> ${user.join_date}</p>
+    <p><strong>Is Admin:  </strong> ${user.is_admin? "Admin" : "No Admin"}</p>
+    <p><strong>High Score:  </strong> ${user.high_score}</p>
+    <p><strong>Games Played:  </strong> ${user.games_played}</p>
+    <p><strong>All Time Score:  </strong> ${user.all_time_score}</p>
+
+    `
 });
