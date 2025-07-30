@@ -16,7 +16,7 @@ Visual stakeholder analysis based on influence vs. availability:
 |--------------------------|------------------|-------------------------------------------------------------------------------|
 | School Management / CEO  | Actively Engaged | Initiated the project; strong influence on direction, strategy, and funding   |
 | Teachers                 | Actively Engaged | Direct users in classrooms; influence student engagement and learning outcomes|
-| Developers (Team)        | Actively Engaged | Build and shape the product; high technical influence and project interest    |
+| Developers        | Actively Engaged | Build and shape the product; high technical influence and project interest    |
 | Students                 | Keep Informed    | Primary users with high interest but low influence — design with them in mind |
 | Parents                  | Keep Informed    | Concerned about student outcomes but not directly involved in decisions       |
 | Department for Education | Monitor          | Not involved now, but relevant for long-term compliance and guidance          |
