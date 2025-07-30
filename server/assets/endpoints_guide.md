@@ -84,6 +84,7 @@
   "is_admin": false
 }
 ---
+```
 
 ### GET users/results (auth required)
 - **Headers:**
