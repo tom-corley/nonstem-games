@@ -26,30 +26,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     try {
-      const answersRes = await fetch("/api/correct-answers");
-      const correctAnswers = await answersRes.json();
-
       let score = 0;
       questions.forEach((q) => {
-        if (userAnswers[q.id] === correctAnswers[q.id]) score++;
+        if (userAnswers[q.id] === q.correct_answer) score++;
       });
 
       const percentage = Math.round((score / questions.length) * 100);
       const date = new Date().toLocaleDateString();
 
-      const resultPayload = {
-        date,
-        timeTaken,
-        percentage,
+      // Prepare payload for games table
+      const startedAt = new Date(startTime).toISOString();
+      const endedAt = new Date(endTime).toISOString();
+      const category = questions.length > 0 ? questions[0].category : "Geography";
+      const userId = 1; // TODO: Replace with actual user ID from session/auth
+
+      const gamePayload = {
+        user_id: userId,
         score,
-        totalQuestions: questions.length,
-        userAnswers,
+        started_at: startedAt,
+        ended_at: endedAt,
+        total_questions: questions.length,
+        correct_answers: score,
+        category
       };
 
-      await fetch("http://localhost:3000/questions", {
+      await fetch("http://localhost:3000/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(resultPayload),
+        body: JSON.stringify(gamePayload),
       });
 
       document.getElementById("results").innerText =
