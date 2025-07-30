@@ -10,4 +10,9 @@ function getToken() {
   return localStorage.getItem('token');
 }
 
-module.exports = { storeToken, getToken };
+// Remove token from local storage
+function removeToken() {
+  localStorage.removeItem('token')
+}
+
+module.exports = { storeToken, getToken, removeToken };
