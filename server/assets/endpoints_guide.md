@@ -1,39 +1,3 @@
-### GET users/results (auth required)
-- **Headers:**
-  - Authorization: Bearer <token>
-- **Response:**
-```json
-[
-  {
-    "id": 1,
-    "started_at": "2025-07-29T12:00:00.000Z",
-    "ended_at": "2025-07-29T12:10:00.000Z",
-    "category": "General Knowledge",
-    "total_questions": 5,
-    "score": 3,
-    "correct_answers": 3,
-    "questions": [
-      {
-        "question_id": 1,
-        "was_correct": true,
-        "question_order": 1,
-        "category": "General Knowledge",
-        "difficulty": 2,
-        "question_text": "What is the capital of France?",
-        "correct_answer": "Paris",
-        "question_type": "short_answer",
-        "choice_a": "London",
-        "choice_b": "Berlin",
-        "choice_c": "Madrid",
-        "choice_d": "Paris",
-        "image_url": null
-      }
-      // ...more question objects
-    ]
-  }
-  // ...more game objects
-]
-```
 # API Endpoints Guide
 
 ## Users
@@ -120,6 +84,44 @@
   "is_admin": false
 }
 ---
+```
+
+### GET users/results (auth required)
+- **Headers:**
+  - Authorization: Bearer <token>
+- **Response:**
+```json
+[
+  {
+    "id": 1,
+    "started_at": "2025-07-29T12:00:00.000Z",
+    "ended_at": "2025-07-29T12:10:00.000Z",
+    "category": "General Knowledge",
+    "total_questions": 5,
+    "score": 3,
+    "correct_answers": 3,
+    "questions": [
+      {
+        "question_id": 1,
+        "was_correct": true,
+        "question_order": 1,
+        "category": "General Knowledge",
+        "difficulty": 2,
+        "question_text": "What is the capital of France?",
+        "correct_answer": "Paris",
+        "question_type": "short_answer",
+        "choice_a": "London",
+        "choice_b": "Berlin",
+        "choice_c": "Madrid",
+        "choice_d": "Paris",
+        "image_url": null
+      }
+      // ...more question objects
+    ]
+  }
+  // ...more game objects
+]
+```
 
 ### DELETE users/delete
 - **Headers:**
@@ -129,6 +131,7 @@
 {
   "message": "User deleted successfully"
 }
+```
 ---
 
 ## Games
