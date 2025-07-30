@@ -1,12 +1,12 @@
 const request = require('supertest');
-const app = require('../app');
-const Users = require('../models/users');
+const app = require('../../app');
+const Users = require('../../models/users');
 
 // Mock the Users model methods used in controllers
-jest.mock('../models/users');
+jest.mock('../../models/users');
 
 // Mock the authenticate middleware to inject req.user
-jest.mock('../middleware/auth', () => (req, res, next) => {
+jest.mock('../../middleware/auth', () => (req, res, next) => {
   req.user = { id: 1 }; // simulate logged-in user with id=1
   next();
 });

@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
-  "test": "jest --detectOpenHandles --verbose",
-  "setup-db": "node ./database/setup.js",
-  "dev": "nodemon index.js",
-  "test:coverage": "jest --coverage"
-},
-
+  "scripts": {
+    "test": "jest --detectOpenHandles --verbose",
+    "setup-db": "node ./database/setup.js",
+    "dev": "nodemon index.js",
+    "test:coverage": "jest --coverage"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -25,5 +24,10 @@
     "nodemon": "^3.1.10",
     "pg": "^8.16.3",
     "supertest": "^7.1.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/__tests__/**/*.test.js"],
+    "verbose": true
   }
 }
