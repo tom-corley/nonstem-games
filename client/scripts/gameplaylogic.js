@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   document.getElementById("submit-btn").addEventListener("click", async () => {
+    // Prevent page reload
+    event.preventDefault();
     // Get auth token from localStorage
     const token = localStorage.getItem("token");
     const endTime = Date.now();
@@ -58,19 +60,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         was_correct: userAnswers[q.id] === q.correct_answer
       }));
 
-      await fetch(`http://localhost:3000/games/${gameId}/submit`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify(resultsArray),
-      });
+      // Log the answers array in the format sent to the DB
+      console.log("Answers sent to DB:", resultsArray);
 
+      // Uncomment below to actually send to backend
+      // await fetch(`http://localhost:3000/games/${gameId}/submit`, {
+      //   method: "PATCH",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "Authorization": `Bearer ${token}`
+      //   },
+      //   body: JSON.stringify(resultsArray),
+      // });
+
+      // Show result on page
       document.getElementById("results").innerText =
         `You scored ${score}/${questions.length} (${percentage}%)`;
-
-      window.location.href = "geography-game-results.html";
     } catch (error) {
       console.error("Submission failed:", error);
       document.getElementById("results").innerText = "There was an error submitting your results.";
