@@ -47,11 +47,53 @@
 }
 ```
 
+### PATCH users/update (auth required)
+- **Headers:**
+  - Authorization: Bearer <token>
+- **Request Body:**
+```json
+{
+  "username": "newUsername", // optional
+  "password": "newPassword", // optional
+  "all_time_score": 100,      // optional
+  "games_played": 10,         // optional
+  "high_score": 50            // optional
+}
+```
+- **Response:**
+```json
+{
+  "id": 1,
+  "username": "newUsername",
+  "join_date": "2025-07-29T12:00:00.000Z",
+  "all_time_score": 100,
+  "games_played": 10,
+  "high_score": 50,
+  "is_admin": false
+}
+```
+
+### GET users/:id
+- **Headers:**
+  - Authorization: Bearer <token>
+- **Response:**
+```json
+{
+  "id": 1,
+  "username": "exampleUser",
+  "join_date": "2025-07-29T12:00:00.000Z",
+  "all_time_score": 0,
+  "games_played": 0,
+  "high_score": 0,
+  "is_admin": false
+}
 ---
 
 ## Games
 
-### POST /games/start
+### POST /games/start (auth required)
+- **Headers:**
+  - Authorization: Bearer <token>
 - **Request Body:**
 ```json
 {
@@ -84,7 +126,9 @@
 }
 ```
 
-### PATCH /:game_id/submit
+### PATCH /:game_id/submit (auth required)
+- **Headers:**
+  - Authorization: Bearer <token>
 - **Request Body:**
 ```json
 [
@@ -140,14 +184,12 @@
 ```
 
 ### POST /questions/
-- **Request Body:**
 ```json
 {
   "category": "General Knowledge",
   "difficulty": 2,
   "question_text": "What is the capital of France?",
   "correct_answer": "Paris"
-  // ...other fields
 }
 ```
 - **Response:**
@@ -160,7 +202,6 @@
   "correct_answer": "Paris"
   // ...other fields
 }
-```
 
 ### PATCH /questions/:id
 - **Request Body:**
@@ -185,3 +226,44 @@
   "message": "Question deleted"
 }
 ```
+
+### PATCH /update (auth required)
+- **Headers:**
+  - Authorization: Bearer <token>
+- **Request Body:**
+```json
+{
+  "username": "newUsername", // optional
+  "password": "newPassword", // optional
+  "all_time_score": 100,      // optional
+  "games_played": 10,         // optional
+  "high_score": 50            // optional
+}
+```
+- **Response:**
+```json
+{
+  "id": 1,
+  "username": "newUsername",
+  "join_date": "2025-07-29T12:00:00.000Z",
+  "all_time_score": 100,
+  "games_played": 10,
+  "high_score": 50,
+  "is_admin": false
+}
+```
+
+### GET /:id
+- **Headers:**
+  - Authorization: Bearer <token>
+- **Response:**
+```json
+{
+  "id": 1,
+  "username": "exampleUser",
+  "join_date": "2025-07-29T12:00:00.000Z",
+  "all_time_score": 0,
+  "games_played": 0,
+  "high_score": 0,
+  "is_admin": false
+}
