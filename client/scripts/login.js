@@ -32,7 +32,7 @@ async function handleLogin(e) {
     // Attempt login and redirect to profile page if successful
     const result = await loginUser(username, password);
     console.log('Login successful, redirecting to index.html');
-    window.location.href = '../pages/profile.html';
+    window.location.href = '../index.html';
   } catch (error) {
     console.error('Login error:', error);
     showMessage(error.message || 'Login failed. Please try again.', 'red');
