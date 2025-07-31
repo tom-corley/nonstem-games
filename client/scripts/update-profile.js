@@ -5,6 +5,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   const decodePayload = atob(payloadBase64)
   const parse = JSON.parse(decodePayload);
   const userId = parse.id;
+  const prevUsernameDiv = document.getElementById("prev-username");
+  // Fetch previous username from backend
+  try {
+    const res = await fetch(`http://localhost:3000/users/${userId}`, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    if (res.ok) {
+      const user = await res.json();
+      prevUsernameDiv.textContent = `Previous username: ${user.username}`;
+    } else {
+      prevUsernameDiv.textContent = "Previous username: (unknown)";
+    }
+  } catch {
+    prevUsernameDiv.textContent = "Previous username: (unknown)";
+  }
   // Attach the event handler for form submission
   const form = document.getElementById("editForm");
   form.addEventListener("submit", (e) => updateUsername(e, userId, token));
