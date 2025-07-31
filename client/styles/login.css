@@ -3,3 +3,7 @@
 nav ul li {
   color: var(--color-grey);
 }
+
+input {
+  border-left: 3px solid var(--color-yellow);
+}

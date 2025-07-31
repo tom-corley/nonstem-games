@@ -11,7 +11,7 @@ if (loginForm) {
 
 async function handleLogin(e) {
   e.preventDefault();
-  console.log("Login form submitted");
+  console.log('Login form submitted');
 
   // Get input values
   const usernameInput = document.getElementById('username');
@@ -19,7 +19,7 @@ async function handleLogin(e) {
   const username = usernameInput ? usernameInput.value : '';
   const password = passwordInput ? passwordInput.value : '';
 
-  console.log("Username:", username, "Password:", password ? "***" : "empty");
+  console.log('Username:', username, 'Password:', password ? '***' : 'empty');
 
   // Validate
   if (!username || !password) {
@@ -28,20 +28,20 @@ async function handleLogin(e) {
   }
 
   try {
-    console.log("Attempting login...");
+    console.log('Attempting login...');
     // Attempt login and redirect to profile page if successful
     const result = await loginUser(username, password);
-    console.log("Login successful, redirecting to index.html");
-    window.location.href = '../index.html';
+    console.log('Login successful, redirecting to index.html');
+    window.location.href = '../pages/profile.html';
   } catch (error) {
-    console.error("Login error:", error);
+    console.error('Login error:', error);
     showMessage(error.message || 'Login failed. Please try again.', 'red');
   }
 }
 
 // Core login logic
 async function loginUser(username, password) {
-  console.log("Starting login process...");
+  console.log('Starting login process...');
 
   const loginRes = await fetch('http://localhost:3000/users/login', {
     method: 'POST',
@@ -51,13 +51,13 @@ async function loginUser(username, password) {
 
   if (!loginRes.ok) {
     const error = await loginRes.json();
-    console.error("Login failed:", error);
+    console.error('Login failed:', error);
     throw new Error(error.error || 'Login failed');
   }
 
   const loginData = await loginRes.json();
   console.log(loginData);
-  console.log("Login successful, storing token...");
+  console.log('Login successful, storing token...');
   storeToken(loginData.token);
   return loginData;
 }
