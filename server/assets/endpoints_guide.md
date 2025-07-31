@@ -133,8 +133,8 @@
 }
 ```
 ---
-
-## Games
+```
+### Games
 
 ### POST /games/start (auth required)
 - **Headers:**
