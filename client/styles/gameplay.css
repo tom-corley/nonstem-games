@@ -7,31 +7,34 @@ body {
   color: #222;
 }
 
-/* Navbar */
-#navbar {
-  background-color: #fffbea;
-  border-bottom: 2px solid #ffd700;
-  padding: 1em;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0px 20px 0px 0px;
-  color: #1b4965;
-}
-#navbar-img img{
-    height: 100px;
-}
-#navbar-links{
-    margin-right: 20px;
-    
-}
-#navbar-links a{
-    margin-right: 20px;
-    color: #1b4965;
-    text-decoration: none;
+header {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    margin-right: 1.25rem;
+    list-style: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #1b4965;
+}
+
+.logo {
+  width: 25px;
+  height: 25px;
+}
 #navbar h2 {
   margin: 0;
   color: #ffd700;
@@ -141,4 +144,59 @@ input[type="radio"] {
   background-color: white;
   border: 2px dashed #ffd700;
   border-radius: 6px;
+}
+
+.footer {
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-around;
+  padding: 6px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.branding .title {
+  color: var(--color-yellow);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.branding .subtitle {
+  color: var(--color-grey);
+  font-size: 7px;
+}
+
+.email-input {
+  color: var(--color-grey);
+  font-size: 7px;
+  padding: 5px;
+  width: 150px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.subscribe-btn {
+  background-color: var(--color-yellow);
+  border: none;
+  color: white;
+  font-size: 7px;
+  padding: 5px;
+  width: 70px;
+  height: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.footer-links {
+  display: flex;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--color-grey);
+}
+
+.socials i {
+  color: var(--color-yellow);
+  margin-right: 5px;
 }

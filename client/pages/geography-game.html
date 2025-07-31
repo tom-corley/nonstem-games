@@ -8,21 +8,16 @@
   <script src="../scripts/gameplaylogic.js" type="module" defer></script>
 </head>
 <body>
-  <section>
-    
-    <div id="navbar">
-      <div id='navbar-h3'>
-              <h3>Quiz Grad</h3>
-          </div>
-          <div id='navbar-img'>
-              <img src="..//assets/quizlogo.png" alt="QuizLogo" /> 
-          </div>
-          <div id="navbar-links">
-              <a href="../index.html">Home</a>
-              <a href="../index.html">LogOut</a>
-          </div>
-    </div>
-  </section>
+  <header>
+    <nav class="navbar">
+      <img src="../assets/logo.jpg" alt="logo icon" class="logo" />
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
   <section id="game-start">
 
   </section>
@@ -38,6 +33,23 @@
     <form id="quiz-form"></form>
     <button id="submit-btn">Submit Answers</button>
   </section>
-
+  <footer class="footer">
+    <div class="branding">
+      <p class="title">Earth IQ</p>
+      <p class="subtitle">A Fun Quiz App</p>
+    </div>
+    <input type="text" placeholder="Enter your email" class="email-input" />
+    <button class="subscribe-btn">Subscribe</button>
+    <div class="footer-links">
+      <p>About</p>
+      <p>FAQ</p>
+      <p>Careers</p>
+    </div>
+    <div class="socials">
+      <i class="fa fa-facebook"></i>
+      <i class="fa fa-twitter"></i>
+      <i class="fa fa-instagram"></i>
+    </div>
+  </footer>
 </body>
 </html>

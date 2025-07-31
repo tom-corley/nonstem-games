@@ -8,18 +8,16 @@
     <script src="../scripts/results.logic.js" type="module" defer></script>
 </head>
 <body>
-    <nav id='navbar'>
-          <div id='navbar-h3'>
-              <h3>Quiz Grad</h3>
-          </div>
-          <div id='navbar-img'>
-              <img src="../assets/quizlogo.png" alt="QuizLogo" /> 
-          </div>
-          <div id="navbar-links">
-              <a href="../index.html">Home</a>
-              <a href="../pages/login.html">LogOut</a>
-          </div>
-    </nav>
+    <header>
+      <nav class="navbar">
+        <img src="../assets/logo.jpg" alt="logo icon" class="logo" />
+        <ul class="nav-links">
+          <li><a href="../index.html" style="text-decoration:none;color:#1b4965;">Home</a></li>
+          <li><a href="profile.html" style="text-decoration:none;color:#1b4965;">Profile</a></li>
+          <li><a href="login.html" style="text-decoration:none;color:#1b4965;">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <div id='table-div'>
           <h1>User  Results</h1>
@@ -30,11 +28,30 @@
                         <th>Score</th>
                         <th>Percentage %</th>
                         <th>Date</th>
-                        <th>Name</th>
+                        <th>Category</th>
                         <th>Time</th>
                     </tr>
                     
             </table>
     </div>
+
+    <footer class="footer">
+      <div class="branding">
+        <p class="title" style="color:#fdd835;font-size:12px;font-weight:bold;">Earth IQ</p>
+        <p class="subtitle" style="color:#666;font-size:7px;">A Fun Quiz App</p>
+      </div>
+      <input type="text" placeholder="Enter your email" class="email-input" />
+      <button class="subscribe-btn">Subscribe</button>
+      <div class="footer-links" style="display:flex;gap:8px;font-size:10px;font-weight:bold;color:#666;">
+        <p>About</p>
+        <p>FAQ</p>
+        <p>Careers</p>
+      </div>
+      <div class="socials">
+        <i class="fa fa-facebook" style="color:#fdd835;margin-right:5px;"></i>
+        <i class="fa fa-twitter" style="color:#fdd835;margin-right:5px;"></i>
+        <i class="fa fa-instagram" style="color:#fdd835;margin-right:5px;"></i>
+      </div>
+    </footer>
 </body>
 </html>
