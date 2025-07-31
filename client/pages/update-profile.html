@@ -7,13 +7,36 @@
   <script type="module" src="../scripts/update-profile.js" defer></script>
 </head>
 <body>
-   <h2>Edit Username</h2>
+   <header class="p-[10px] border-b border-gray-300">
+    <nav class="flex items-center">
+      <a href="../index.html"><img class="w-[25px] h-[25px]" src="../assets/logo.jpg" alt="logo icon"></a>
+      <ul class="flex justify-end flex-1 gap-4 ml-4 mr-5">
+        <a href="./login.html"><li class="text-[12px] font-bold">Login</li></a>
+        <a href="./register.html"><li class="text-[12px] font-bold">Register</li></a>
+        <a id="profile"href="./pages/profile.html"><li class="text-[12px] font-bold"> <i class="fa fa-user-circle-o" aria-hidden="true"></i></li></a>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Edit Username</h2>
   <form id="editForm">
     <label>Username:</label>
     <input type="text" id="username" required />
     <button type="submit">Update</button>
   </form>
-
   <div id="message"></div>
+  </main>
+  <footer class="border-t-1 flex justify-between p-[10px] pt-[6px] pb-[3px]">
+    <div class="flex flex-col">
+      <p style="color:var(--color-yellow);" class="text-xs font-bold">Earth IQ</p>
+      <p style="color:var(--color-grey);" class="text-xs  text-[7px]">A Fun Quiz App</p>
+    </div>
+    <div>
+     <span style="color:var(--color-yellow)" class="text-[12px] font-bold">Share</span> <i style="color:var(--color-light-grey);" class="fa fa-share pr-[10px]" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-facebook" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-twitter" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-instagram" aria-hidden="true"></i>
+    </div>
+  </footer>
 </body>
 </html>

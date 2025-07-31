@@ -15,39 +15,35 @@
     <nav class="flex items-center">
      <a href="../index.html"><img class="w-[25px] h-[25px]" src="../assets/logo.jpg" alt="logo icon"></a>
       <ul class="flex justify-end flex-1 gap-4 ml-4 mr-5">
+        <a href="./login.html"><li class="text-[12px] font-bold">Login</li></a>
+        <a href="./register.html"><li class="text-[12px] font-bold">Register</li></a>
       </ul>
     </nav>
   </header>
-  <main class="mx-auto w-[50%] mt-[20px] p-[5px] mb-[30px]">
-    <p>Create Your Account</p>
+  <main class="mx-auto w-[50%] h-[100%] mt-[20px] p-[5px] mb-[30px]">
+    <p style="color: var(--color-grey);" class="text-[12px] font-bold">Create Your Account</p>
     <form id="register-form">
       <div class="w-full max-w-sm min-w-[150px] mt-5">
-        <input id="username" class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" placeholder="Username" />
+        <input id="username" class="h-[30px] w-full placeholder:text-slate-400 text-[10px] font-bold text-slate-700 text-sm border px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" placeholder="Username" />
       </div>
       <div class="w-full max-w-sm min-w-[150px] mt-5">
-        <input id="password" type="password" class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" placeholder="Password" />
+        <input id="password" type="password" class="h-[30px] w-full placeholder:text-slate-400 text-[10px] font-bold text-slate-700 text-sm border px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" placeholder="Password" />
       </div>
-      <button style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white text-[7px] p-[7px] mt-[20px] w-[60px]" type="submit">Register</button>
+      <button style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white text-[10px] font-bold  p-[7px] mt-[20px] w-[60px]" type="submit">Register</button>
       <div id="register-message" style="margin-top:10px; min-height:1.5em;"></div>
     </form>
     <div class="flex justify-between items-center">
-      <p style="color:var(--color-grey);" class="text-[14px]">Already have an account</p>
-      <a href="./login.html"><button style="color:var(--color-yellow);" class="border-1 rounded-xs text-white text-[7px] p-[8px] shadow-lg mt-[5px] w-[80px]" type="button">Login</button></a>
+      <p style="color:var(--color-grey);" class="text-[12px] font-bold">Already have an account?</p>
+      <a href="./login.html"><button style="color:var(--color-yellow);" class="border-1 rounded-xs text-white text-[10px] font-bold p-[8px] shadow-lg mt-[5px] w-[80px]" type="button">Login</button></a>
      </div>
   </main>
-  <footer class="border-t-1 flex justify-around pt-[6px] pb-[3px]">
+  <footer class="border-t-1 flex justify-between p-[10px] pt-[6px] pb-[3px]">
     <div class="flex flex-col">
       <p style="color:var(--color-yellow);" class="text-xs font-bold">Earth IQ</p>
       <p style="color:var(--color-grey);" class="text-xs  text-[7px]">A Fun Quiz App</p>
     </div>
-    <input style ="color: var(--color-grey);" class="border-1 text-[7px] p-1 rounded-sm w-[150px] h-[30px] relative" type="text" placeholder="Enter your email" />
-    <button style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white text-[7px] p-[1px] mt-[5px] w-[70px] h-[20px] absolute right-[391px]" type="button">Subscribe</button>
-    <div style="color:var(--color-grey);" class="flex text-[10px] font-bold justify-between">
-      <p class="mr-[8px]">About</p>
-      <p class="mr-[8px]">FAQ</p>
-      <p class="mr-[8px]">Careers</p>
-    </div>
     <div>
+     <span style="color:var(--color-yellow)" class="text-[12px] font-bold">Share</span> <i style="color:var(--color-light-grey);" class="fa fa-share pr-[10px]" aria-hidden="true"></i>
       <i style="color:var(--color-yellow);" class="fa fa-facebook" aria-hidden="true"></i>
       <i style="color:var(--color-yellow);" class="fa fa-twitter" aria-hidden="true"></i>
       <i style="color:var(--color-yellow);" class="fa fa-instagram" aria-hidden="true"></i>

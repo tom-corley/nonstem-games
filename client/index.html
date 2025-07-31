@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles/global.css" />
   <link rel="stylesheet" href="styles/index.css" />
+  <script type="module" src="scripts/index.js" defer></script>
 </head>
 <body>
   <header class="p-[10px] border-b border-gray-300">
@@ -16,39 +17,32 @@
       <ul class="flex justify-end flex-1 gap-4 ml-4">
          <a href="./pages/login.html"><li class="text-[12px] font-bold">Login</li></a>
          <a href="./pages/register.html"><li class="text-[12px] font-bold">Register</li></a>
-         <a href="./pages/profile.html"><li class="text-[12px] font-bold"> <i class="fa fa-user-circle-o" aria-hidden="true"></i></li></a>
+         <a id="profile" style="display: none;" href="./pages/profile.html"><li class="text-[12px] font-bold"> <i class="fa fa-user-circle-o" aria-hidden="true"></i></li></a>
       </ul>
     </nav>
   </header>
-  <main class="flex p-[30px] h-[300px] justify-end">
-    <div class="flex flex-col left-banner w-[50%] border-1 p-[20px] justify-between">
+  <main class="flex p-[30px] h-[100%] justify-end">
+    <div class="flex flex-col left-banner w-[50%] border-1 p-[20px] justify-between shadow-md">
       <p style="color:var(--color-grey);"class="font-bold text-[32px]">Bringing joy to the classroom</p>
       <p class="text-black pb-5">Geography is the subject that holds the key to our future? — Michael Palin</p>
     </div>
     <div class="right-banner flex flex-col justify-between w-[50%] pl-3">
     <img src="./assets/map.jpg" class="w-[350px] h-[220px]" alt="yellow image"/>
     <p style="color:var(--color-grey);" class="text-[12px] font-bold">| Ready to map your mind? </p>
-    <button id="start-solving-btn" style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white text-[7px] p-[7px] mt-[5px] w-[60px]" type="button">Start Solving</button>
+    <button id="start-solving-btn" style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white text-[10px] font-bold p-[7px] mt-[5px] w-[100px] shadow-md" type="button">Start Solving</button>
     </div>
   </main>
-  <footer class="border-t-1 flex justify-around pt-[6px] pb-[3px]">
+   <footer class="border-t-1 flex justify-between p-[10px] pt-[6px] pb-[3px]">
     <div class="flex flex-col">
       <p style="color:var(--color-yellow);" class="text-xs font-bold">Earth IQ</p>
       <p style="color:var(--color-grey);" class="text-xs  text-[7px]">A Fun Quiz App</p>
     </div>
-    <input style ="color: var(--color-grey);" class="border-1 text-[7px] p-1 rounded-sm w-[150px] h-[30px] relative" type="text" placeholder="Enter your email" />
-    <button style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white text-[7px] p-[1px] mt-[5px] w-[70px] h-[20px] absolute right-[391px]" type="button">Subscribe</button>
-    <div style="color:var(--color-grey);" class="flex text-[10px] font-bold justify-between">
-      <p class="mr-[8px]">About</p>
-      <p class="mr-[8px]">FAQ</p>
-      <p class="mr-[8px]">Careers</p>
-    </div>
     <div>
+     <span style="color:var(--color-yellow)" class="text-[12px] font-bold">Share</span> <i style="color:var(--color-light-grey);" class="fa fa-share pr-[10px]" aria-hidden="true"></i>
       <i style="color:var(--color-yellow);" class="fa fa-facebook" aria-hidden="true"></i>
       <i style="color:var(--color-yellow);" class="fa fa-twitter" aria-hidden="true"></i>
       <i style="color:var(--color-yellow);" class="fa fa-instagram" aria-hidden="true"></i>
     </div>
   </footer>
-  <script src="scripts/index.js"></script>
 </body>
 </html>
