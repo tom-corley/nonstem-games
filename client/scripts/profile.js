@@ -74,6 +74,7 @@ const deleteUser = async(e, userId, token) => {
 
 const logoutUser = () => {
     removeToken();
+    localStorage.setItem('loggedIn', 'false');
     removeUserId();
      setTimeout(() => {
       window.location.href = `../index.html`;

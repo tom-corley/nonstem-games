@@ -5,9 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Results Page</title>
     <link rel="stylesheet" href="../styles/results.css">
-    <script src="../scripts/results.logic.js" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <script type="module" src="scripts/index.js" defer></script>
 </head>
 <body>
+  <header class="p-[10px] border-b border-gray-300">
+    <nav class="flex items-center">
+      <a href="../index.html"><img class="w-[25px] h-[25px]" src="../assets/logo.jpg" alt="logo icon"></a>
+      <ul class="flex justify-end flex-1 gap-4 ml-4 mr-5">
+         <a href="./login.html"><li class="text-[12px] font-bold">Login</li></a>
+         <a href="./register.html"><li class="text-[12px] font-bold">Register</li></a>
+         <a id="profile"href="./pages/profile.html"><li class="text-[12px] font-bold"> <i class="fa fa-user-circle-o" aria-hidden="true"></i></li></a>
+      </ul>
+    </nav>
+  </header>
+  <main>
+     <div id='table-div'>
     <header>
       <nav class="navbar">
         <img src="../assets/logo.jpg" alt="logo icon" class="logo" />
@@ -18,7 +34,7 @@
         </ul>
       </nav>
     </header>
-
+  </main> 
     <div id='table-div'>
           <h1>User  Results</h1>
           <div id="connection-message" style="display:none; margin: 10px 0; padding: 10px; background: #ffe0e0; color: #a00; border: 1px solid #a00; border-radius: 5px;"></div>
@@ -31,27 +47,21 @@
                         <th>Category</th>
                         <th>Time</th>
                     </tr>
-                    
+
             </table>
     </div>
-
-    <footer class="footer">
-      <div class="branding">
-        <p class="title" style="color:#fdd835;font-size:12px;font-weight:bold;">Earth IQ</p>
-        <p class="subtitle" style="color:#666;font-size:7px;">A Fun Quiz App</p>
-      </div>
-      <input type="text" placeholder="Enter your email" class="email-input" />
-      <button class="subscribe-btn">Subscribe</button>
-      <div class="footer-links" style="display:flex;gap:8px;font-size:10px;font-weight:bold;color:#666;">
-        <p>About</p>
-        <p>FAQ</p>
-        <p>Careers</p>
-      </div>
-      <div class="socials">
-        <i class="fa fa-facebook" style="color:#fdd835;margin-right:5px;"></i>
-        <i class="fa fa-twitter" style="color:#fdd835;margin-right:5px;"></i>
-        <i class="fa fa-instagram" style="color:#fdd835;margin-right:5px;"></i>
-      </div>
-    </footer>
+  </main>
+   <footer class="border-t-1 flex justify-between p-[10px] pt-[6px] pb-[3px]">
+    <div class="flex flex-col">
+      <p style="color:var(--color-yellow);" class="text-xs font-bold">Earth IQ</p>
+      <p style="color:var(--color-grey);" class="text-xs  text-[7px]">A Fun Quiz App</p>
+    </div>
+    <div>
+     <span style="color:var(--color-yellow)" class="text-[12px] font-bold">Share</span> <i style="color:var(--color-light-grey);" class="fa fa-share pr-[10px]" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-facebook" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-twitter" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-instagram" aria-hidden="true"></i>
+    </div>
+  </footer>
 </body>
 </html>

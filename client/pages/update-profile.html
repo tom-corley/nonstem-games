@@ -10,18 +10,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <img src="../assets/logo.jpg" alt="logo icon" class="logo" />
-      <ul class="nav-links">
-        <li>Home</li>
-        <li>Profile</li>
-        <li>Logout</li>
+   <header class="p-[10px] border-b border-gray-300">
+    <nav class="flex items-center">
+      <a href="../index.html"><img class="w-[25px] h-[25px]" src="../assets/logo.jpg" alt="logo icon"></a>
+      <ul class="flex justify-end flex-1 gap-4 ml-4 mr-5">
+        <a href="./login.html"><li class="text-[12px] font-bold">Login</li></a>
+        <a href="./register.html"><li class="text-[12px] font-bold">Register</li></a>
+        <a id="profile"href="./pages/profile.html"><li class="text-[12px] font-bold"> <i class="fa fa-user-circle-o" aria-hidden="true"></i></li></a>
       </ul>
     </nav>
   </header>
-
-  <main class="content-wrapper">
+   <main class="content-wrapper">
     <h2>Edit Your Username</h2>
     <form id="editForm" class="edit-form">
       
@@ -36,23 +35,16 @@
       <button class="back-btn">Go Back</button>
     </div>
   </main>
-
-  <footer class="footer">
-    <div class="branding">
-      <p class="title">Earth IQ</p>
-      <p class="subtitle">A Fun Quiz App</p>
+  <footer class="border-t-1 flex justify-between p-[10px] pt-[6px] pb-[3px]">
+    <div class="flex flex-col">
+      <p style="color:var(--color-yellow);" class="text-xs font-bold">Earth IQ</p>
+      <p style="color:var(--color-grey);" class="text-xs  text-[7px]">A Fun Quiz App</p>
     </div>
-    <input type="text" placeholder="Enter your email" class="email-input" />
-    <button class="subscribe-btn">Subscribe</button>
-    <div class="footer-links">
-      <p>About</p>
-      <p>FAQ</p>
-      <p>Careers</p>
-    </div>
-    <div class="socials">
-      <i class="fa fa-facebook"></i>
-      <i class="fa fa-twitter"></i>
-      <i class="fa fa-instagram"></i>
+    <div>
+     <span style="color:var(--color-yellow)" class="text-[12px] font-bold">Share</span> <i style="color:var(--color-light-grey);" class="fa fa-share pr-[10px]" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-facebook" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-twitter" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-instagram" aria-hidden="true"></i>
     </div>
   </footer>
 </body>
