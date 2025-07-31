@@ -29,6 +29,7 @@ function setupEventListeners() {
     }
 
     try {
+      console.log("Sending game request with user_id:", userId);
       // Start the game on the server by creating a new game record
       const startRes = await fetch("http://localhost:3000/games/start", {
         method: "POST",
@@ -37,11 +38,13 @@ function setupEventListeners() {
           "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({ 
-          user_id: userId, 
+          user_id: parseInt(userId), 
           category: "Geography", 
           num_questions: 10 
         }),
       });
+
+      console.log("Server response status:", startRes.status);
 
       if (!startRes.ok) {
         throw new Error("Failed to start game");
