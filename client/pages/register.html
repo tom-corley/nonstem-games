@@ -13,10 +13,8 @@
 <body>
   <header class="p-[10px] border-b border-gray-300">
     <nav class="flex items-center">
-      <img class="w-[25px] h-[25px]" src="../assets/logo.jpg" alt="logo icon">
+     <a href="../index.html"><img class="w-[25px] h-[25px]" src="../assets/logo.jpg" alt="logo icon"></a>
       <ul class="flex justify-end flex-1 gap-4 ml-4 mr-5">
-        <li class="text-[12px] font-bold">Login </li>
-        <li class="text-[12px] font-bold">Registration </li>
       </ul>
     </nav>
   </header>
@@ -24,17 +22,17 @@
     <p>Create Your Account</p>
     <form id="register-form">
       <div class="w-full max-w-sm min-w-[150px] mt-5">
-        <input id="username" style="color:var(--color-light-grey);" class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" placeholder="Username" />
+        <input id="username" class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" placeholder="Username" />
       </div>
       <div class="w-full max-w-sm min-w-[150px] mt-5">
-        <input id="password" type="password" style="color:var(--color-light-grey);" class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" placeholder="Password" />
+        <input id="password" type="password" class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow" placeholder="Password" />
       </div>
       <button style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white text-[7px] p-[7px] mt-[20px] w-[60px]" type="submit">Register</button>
       <div id="register-message" style="margin-top:10px; min-height:1.5em;"></div>
     </form>
     <div class="flex justify-between items-center">
       <p style="color:var(--color-grey);" class="text-[14px]">Already have an account</p>
-      <button style="color:var(--color-yellow);" class="border-1 rounded-xs text-white text-[7px] p-[8px] shadow-lg mt-[5px] w-[80px]" type="button">Login</button>
+      <a href="./login.html"><button style="color:var(--color-yellow);" class="border-1 rounded-xs text-white text-[7px] p-[8px] shadow-lg mt-[5px] w-[80px]" type="button">Login</button></a>
      </div>
   </main>
   <footer class="border-t-1 flex justify-around pt-[6px] pb-[3px]">
