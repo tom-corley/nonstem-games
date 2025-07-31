@@ -1,4 +1,4 @@
-import { storeToken } from './helpers/helpers.js';
+import { storeToken, storeUserId } from './helpers/helpers.js';
 
 // DOM elements
 const loginForm = document.getElementById('login-form');
@@ -32,7 +32,7 @@ async function handleLogin(e) {
     // Attempt login and redirect to profile page if successful
     const result = await loginUser(username, password);
     console.log('Login successful, redirecting to index.html');
-    window.location.href = '../pages/profile.html';
+    window.location.href = '../index.html';
   } catch (error) {
     console.error('Login error:', error);
     showMessage(error.message || 'Login failed. Please try again.', 'red');
@@ -57,8 +57,9 @@ async function loginUser(username, password) {
 
   const loginData = await loginRes.json();
   console.log(loginData);
-  console.log('Login successful, storing token...');
+  console.log('Login successful, storing token and user ID...');
   storeToken(loginData.token);
+  storeUserId(loginData.user.id);
   return loginData;
 }
 

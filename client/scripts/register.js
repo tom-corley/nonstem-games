@@ -1,6 +1,6 @@
 // const { storeToken } = require('./helpers/helpers.js');
 
-import { storeToken } from '../scripts/helpers/helpers.js';
+import { storeToken, storeUserId } from '../scripts/helpers/helpers.js';
 
 // DOM elements
 const registerForm = document.getElementById("register-form");
@@ -75,8 +75,9 @@ async function registerUser(username, password) {
   }
 
   const loginData = await loginRes.json();
-  console.log("Login successful, storing token...");
+  console.log("Login successful, storing token and user ID...");
   storeToken(loginData.token);
+  storeUserId(loginData.user.id);
   return loginData;
 }
 
