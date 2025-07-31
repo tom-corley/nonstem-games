@@ -1,18 +1,16 @@
+import { getToken } from './helpers/helpers.js';
 document.addEventListener("DOMContentLoaded", async () => {
-  const params = new URLSearchParams(window.location.search);
-  const userId = params.get("id");
-
-  // Load existing user and fill input
-  const res = await fetch(`http://localhost:3000/users/${userId}`);
-  const user = await res.json();
-  document.getElementById("username").value = user.username;
-
+  const token = getToken();
+  const payloadBase64 = token.split('.')[1];
+  const decodePayload = atob(payloadBase64)
+  const parse = JSON.parse(decodePayload);
+  const userId = parse.id;
   // Attach the event handler for form submission
   const form = document.getElementById("editForm");
-  form.addEventListener("submit", (e) => updateUsername(e, userId));
+  form.addEventListener("submit", (e) => updateUsername(e, userId, token));
 });
 
-const updateUsername = async (e, userId) => {
+const updateUsername = async (e, userId, token) => {
   e.preventDefault();
 
   const updatedUsername = document.getElementById("username").value;
@@ -21,10 +19,9 @@ const updateUsername = async (e, userId) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJnYXlhdGhyaSIsImlzX2FkbWluIjpmYWxzZSwiaWF0IjoxNzUzODgxNjA2LCJleHAiOjE3NTM4ODUyMDZ9.o65bjgKpqbk2_mi9g57yNkF45OnFyS8zpfaa9Th2Qw8",
+       authorization: `Bearer ${token}`
     },
-    body: JSON.stringify({ username: updatedUsername, id: userId }),
+       body: JSON.stringify({ username: updatedUsername, id: userId })
   });
 
   const result = await response.json();

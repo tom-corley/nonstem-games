@@ -42,13 +42,13 @@ async function handleLogin(e) {
 // Core login logic
 async function loginUser(username, password) {
   console.log("Starting login process...");
-  
+
   const loginRes = await fetch('http://localhost:3000/users/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password }),
   });
-  
+
   if (!loginRes.ok) {
     const error = await loginRes.json();
     console.error("Login failed:", error);
@@ -56,6 +56,7 @@ async function loginUser(username, password) {
   }
 
   const loginData = await loginRes.json();
+  console.log(loginData);
   console.log("Login successful, storing token...");
   storeToken(loginData.token);
   return loginData;

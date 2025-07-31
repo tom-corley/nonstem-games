@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../styles/global.css" />
   <link rel="stylesheet" href="../styles/login.css" />
+  <script type="module" src="../scripts/profile.js" defer></script>
 </head>
 <body>
   <header class="p-[10px] border-b border-gray-300">
@@ -22,8 +23,8 @@
   <main>
     <div style="color:var(--color-yellow);" class="mx-auto w-[50%] mt-[20px] p-[5px] mb-[30px] border-1 rounded-sm" >
     <div id="profile"></div>
-    <button onclick="window.location.href='update-profile.html?id=1'" type="submit">Edit Profile</button>
-    <button onclick="deleleUser()" type="submit">Delete</button>
+    <button onclick="window.location.href='update-profile.html?id=2'" type="submit">Edit Profile</button>
+    <button id="delete" type="button">Delete</button>
    </div>
   </main>
    <footer class="border-t-1 flex justify-around pt-[6px] pb-[3px]">
@@ -44,8 +45,5 @@
       <i style="color:var(--color-yellow);" class="fa fa-instagram" aria-hidden="true"></i>
     </div>
   </footer>
-
-  <script src="../scripts/profile.js"></script>
-
 </body>
 </html>
