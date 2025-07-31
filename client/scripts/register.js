@@ -1,4 +1,4 @@
-const { storeToken } = require('./helpers/helpers.js');
+const { storeToken } = require('./helpers.js');
 
 // DOM elements
 const registerForm = document.querySelector("main form");

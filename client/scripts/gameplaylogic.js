@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const timeTaken = Math.floor((endTime - startTime) / 1000);
 
+    // Get username from input
+    const username = document.getElementById("username-input").value || "Anonymous";
+
     const userAnswers = {};
     questions.forEach((q) => {
       const selected = document.querySelector(`input[name="question-${q.id}"]:checked`);
@@ -43,16 +46,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       const userId = 1; // TODO: Replace with actual user ID from session/auth
       const numQuestions = questions.length;
 
-      const startRes = await fetch("http://localhost:3000/games/start", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({ user_id: userId, category, num_questions: numQuestions }),
-      });
-      const startData = await startRes.json();
-      const gameId = startData.game.id;
+      let gameId;
+      let connectionFailed = false;
+      try {
+        const startRes = await fetch("http://localhost:3000/games/start", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ user_id: userId, category, num_questions: numQuestions }),
+        });
+        if (!startRes.ok) throw new Error("DB connection failed");
+        const startData = await startRes.json();
+        gameId = startData.game.id;
+      } catch (err) {
+        connectionFailed = true;
+      }
 
       // Step 2: Prepare results for PATCH
       const resultsArray = questions.map((q) => ({
@@ -63,15 +73,30 @@ document.addEventListener("DOMContentLoaded", async () => {
       // Log the answers array in the format sent to the DB
       console.log("Answers sent to DB:", resultsArray);
 
-      // Uncomment below to actually send to backend
-      // await fetch(`http://localhost:3000/games/${gameId}/submit`, {
-      //   method: "PATCH",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     "Authorization": `Bearer ${token}`
-      //   },
-      //   body: JSON.stringify(resultsArray),
-      // });
+      if (!connectionFailed) {
+        // Uncomment below to actually send to backend
+        // await fetch(`http://localhost:3000/games/${gameId}/submit`, {
+        //   method: "PATCH",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     "Authorization": `Bearer ${token}`
+        //   },
+        //   body: JSON.stringify(resultsArray),
+        // });
+      } else {
+        // Store result in localStorage
+        const localResults = JSON.parse(localStorage.getItem("localResults") || "[]");
+        localResults.push({
+          username,
+          score,
+          percentage,
+          date,
+          timeTaken,
+          totalQuestions: questions.length,
+          answers: resultsArray
+        });
+        localStorage.setItem("localResults", JSON.stringify(localResults));
+      }
 
       // Show result on page
       document.getElementById("results").innerText =
