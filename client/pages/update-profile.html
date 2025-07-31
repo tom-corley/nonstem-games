@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="../styles/global.css" />
+  <link rel="stylesheet" href="../styles/updateprofile.css" />
   <script type="module" src="../scripts/update-profile.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
    <header class="p-[10px] border-b border-gray-300">
@@ -17,14 +20,20 @@
       </ul>
     </nav>
   </header>
-  <main>
-    <h2>Edit Username</h2>
-  <form id="editForm">
-    <label>Username:</label>
-    <input type="text" id="username" required />
-    <button type="submit">Update</button>
-  </form>
-  <div id="message"></div>
+   <main class="content-wrapper">
+    <h2>Edit Your Username</h2>
+    <form id="editForm" class="edit-form">
+      
+      <div id="prev-username" class="prev-username" style="margin-bottom:10px;"></div>
+      <input type="text" id="username" placeholder="Enter new username" required />
+      <button type="submit">Update</button>
+      <div id="message" class="message"></div>
+    </form>
+
+    <div class="info-block">
+      <p class="hint">Need to update your profile information?</p>
+      <button class="back-btn">Go Back</button>
+    </div>
   </main>
   <footer class="border-t-1 flex justify-between p-[10px] pt-[6px] pb-[3px]">
     <div class="flex flex-col">

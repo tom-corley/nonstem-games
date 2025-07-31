@@ -1,10 +1,9 @@
-// __tests__/games.model.mock.test.js
-const db = require('../database/connect');
-const Games = require('../models/Games');
-const Questions = require('../models/Questions');
+const db = require('../../database/connect');
+const Games = require('../../models/Games');
+const Questions = require('../../models/Questions');
 
-jest.mock('../database/connect'); // mock db.query
-jest.mock('../models/Questions'); // optional, to avoid real Questions logic
+jest.mock('../../database/connect');
+jest.mock('../../models/Questions'); 
 
 describe('Games model (mocked db)', () => {
   beforeEach(() => {
@@ -73,18 +72,28 @@ describe('Games model (mocked db)', () => {
       ];
 
       db.query
-        // mock UPDATE game_questions (twice)
-        .mockResolvedValueOnce({}) 
-        .mockResolvedValueOnce({}) 
-        // mock UPDATE games
+        .mockResolvedValueOnce({}) // UPDATE game_questions for question 101
+        .mockResolvedValueOnce({}) // UPDATE game_questions for question 102
         .mockResolvedValueOnce({
           rows: [{
             id: game_id,
-            score: 1,
+            user_id: 123,
+            score: 50,
             correct_answers: 1,
-            ended_at: new Date()
+            ended_at: new Date(),
           }]
-        });
+        }) // UPDATE games returning updated game with score 50
+        .mockResolvedValueOnce({
+          rows: [{ high_score: 0 }]
+        }) // SELECT high_score from users
+        .mockResolvedValueOnce({
+          rows: [{
+            id: 123,
+            all_time_score: 100,
+            games_played: 10,
+            high_score: 50,
+          }]
+        }); // UPDATE users returning updated user info
 
       const updatedGame = await Games.submitResults(game_id, results);
 
@@ -97,12 +106,20 @@ describe('Games model (mocked db)', () => {
         [false, game_id, 102]
       );
       expect(db.query).toHaveBeenNthCalledWith(3,
-        expect.stringContaining('UPDATE games SET correct_answers'),
-        [1, game_id]
+        expect.stringContaining('UPDATE games SET correct_answers = $1, score = $2, ended_at = NOW() WHERE id = $3 RETURNING *'),
+        [1, 50, game_id]
+      );
+      expect(db.query).toHaveBeenNthCalledWith(4,
+        expect.stringContaining('SELECT high_score FROM users WHERE id = $1'),
+        [123]
+      );
+      expect(db.query).toHaveBeenNthCalledWith(5,
+        expect.stringContaining('UPDATE users SET all_time_score=all_time_score+$1, games_played=games_played+1, high_score=$2 WHERE id = $3 RETURNING *'),
+        [1, 50, 123]
       );
 
       expect(updatedGame).toHaveProperty('id', game_id);
-      expect(updatedGame.score).toBe(1);
+      expect(updatedGame.score).toBe(50);
     });
   });
 });

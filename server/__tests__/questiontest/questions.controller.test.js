@@ -1,13 +1,12 @@
 const request = require('supertest');
-const app = require('../app'); // Adjust if needed
-
-jest.mock('../models/Questions', () => ({
+const app = require('../../app'); 
+jest.mock('../../models/Questions', () => ({
   getAll: jest.fn(),
   findById: jest.fn(),
   create: jest.fn(),
 }));
 
-const Questions = require('../models/Questions');
+const Questions = require('../../models/Questions');
 
 describe('Questions Controller', () => {
   afterEach(() => {

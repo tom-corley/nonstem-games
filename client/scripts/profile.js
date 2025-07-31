@@ -1,4 +1,4 @@
-import { getToken, formatDate, removeToken } from './helpers/helpers.js';
+import { getToken, formatDate, removeToken, removeUserId } from './helpers/helpers.js';
  const token = getToken();
   const payloadBase64 = token.split('.')[1];
   const decodePayload = atob(payloadBase64)
@@ -59,22 +59,24 @@ const deleteUser = async(e, userId, token) => {
   });
 
   if (response.ok) {
+    // Remove user data from localStorage using helper functions
+    removeToken();
+    removeUserId();
+    
     document.getElementById("profile").innerHTML = `<h1 class="my-1 text-center text-xl font-bold leading-8 text-gray-900">User deleted successfully </h1>`;
      setTimeout(() => {
       window.location.href = `../index.html`;
     }, 1000);
   } else {
     document.getElementById("profile").innerHTML = ` <h1 class="my-1 text-center text-xl font-bold leading-8 text-gray-900">Users can't be deleted</h1>`;
-}
-
-
+  }
 }
 
 const logoutUser = () => {
     removeToken();
     localStorage.setItem('loggedIn', 'false');
+    removeUserId();
      setTimeout(() => {
       window.location.href = `../index.html`;
     }, 500);
-
 }

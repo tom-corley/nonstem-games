@@ -29,6 +29,7 @@ function setupEventListeners() {
     }
 
     try {
+      console.log("Sending game request with user_id:", userId);
       // Start the game on the server by creating a new game record
       const startRes = await fetch("http://localhost:3000/games/start", {
         method: "POST",
@@ -37,11 +38,13 @@ function setupEventListeners() {
           "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({ 
-          user_id: userId, 
+          user_id: parseInt(userId), 
           category: "Geography", 
           num_questions: 10 
         }),
       });
+
+      console.log("Server response status:", startRes.status);
 
       if (!startRes.ok) {
         throw new Error("Failed to start game");
@@ -168,7 +171,27 @@ function displayQuestions() {
   questions.forEach((q) => {
     const block = document.createElement("div");
     block.className = "question-block";
-    block.innerHTML = `<h3>${q.text}</h3>`;
+    
+    // Add image if image_url is not null
+    if (q.image_url) {
+      const imageContainer = document.createElement("div");
+      // imageContainer.style.textAlign = "center";
+      imageContainer.style.marginBottom = "15px";
+      
+      const image = document.createElement("img");
+      image.src = q.image_url;
+      image.alt = "Question image";
+      image.style.maxWidth = "100%";
+      image.style.maxHeight = "250px";
+      image.style.border = "1px solid #ccc";
+      image.style.borderRadius = "8px";
+      image.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
+      
+      imageContainer.appendChild(image);
+      block.appendChild(imageContainer);
+    }
+    
+    block.innerHTML += `<h3>${q.text}</h3>`;
 
     if (q.question_type === 'multiple_choice') {
       // Show multiple choice options as radio buttons
@@ -187,7 +210,7 @@ function displayQuestions() {
       input.name = `question-${q.id}`;
       input.placeholder = "Type your answer here...";
       input.required = true;
-      input.style.width = "100%";
+      input.style.width = "50%";
       input.style.padding = "8px";
       input.style.marginTop = "8px";
       input.style.border = "1px solid #ccc";

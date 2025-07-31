@@ -1,19 +1,17 @@
-jest.mock('../middleware/auth', () => (req, res, next) => next());
+jest.mock('../../middleware/auth', () => (req, res, next) => next());
 
 const request = require('supertest');
-const app = require('../app');  // same relative path
+const app = require('../../app');
 
-const Games = require('../models/Games');
-jest.mock('../models/Games');
-
-// rest of your tests...
-
+const Games = require('../../models/Games');
+jest.mock('../../models/Games'); 
 
 describe('Game Controller', () => {
   describe('POST /games/start', () => {
     it('returns 201 and game data on success', async () => {
       const mockGame = { id: 1, category: 'Europe', total_questions: 3 };
       const mockQuestions = [{ id: 1, question: 'What is the capital of France?' }];
+
       Games.start.mockResolvedValue({ game: mockGame, game_questions: mockQuestions });
 
       const res = await request(app)
