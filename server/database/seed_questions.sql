@@ -57,15 +57,15 @@ VALUES
 ('History', 4, 'Who was the Egyptian queen famous for her relationships with Julius Caesar and Mark Antony?', 'Cleopatra', 'multiple_choice', 'Nefertiti', 'Cleopatra', 'Hatshepsut', 'Sobekneferu', NULL),
 ('History', 2, 'Who was the first President of India?', 'Rajendra Prasad', 'multiple_choice', 'Jawaharlal Nehru', 'Rajendra Prasad', 'Indira Gandhi', 'Sarvepalli Radhakrishnan', NULL),
 ('History', 3, 'Which US President issued the Emancipation Proclamation?', 'Abraham Lincoln', 'multiple_choice', 'Ulysses S. Grant', 'Abraham Lincoln', 'Andrew Johnson', 'James Buchanan', NULL),
-('History', 4, 'Who was the first person to circumnavigate the globe?', 'Ferdinand Magellan', 'multiple_choice', 'James Cook', 'Ferdinand Magellan', 'Francis Drake', 'Vasco da Gama', NULL);
+('History', 4, 'Who was the first person to circumnavigate the globe?', 'Ferdinand Magellan', 'multiple_choice', 'James Cook', 'Ferdinand Magellan', 'Francis Drake', 'Vasco da Gama', NULL),
 -- Country outlines for Geography Game (10 multiple choice)
--- ('Geography', 2, 'Which country is shown in this outline?', 'Australia', 'multiple_choice', 'Australia', 'Canada', 'Kenya', 'Germany', '/assets/country-outlines/australia.svg'),
--- ('Geography', 3, 'Which country is shown in this outline?', 'Canada', 'multiple_choice', 'Canada', 'India', 'Greece', 'Peru', '/assets/country-outlines/canada.svg'),
--- ('Geography', 2, 'Which country is shown in this outline?', 'Germany', 'multiple_choice', 'Germany', 'Senegal', 'Uganda', 'South Korea', '/assets/country-outlines/germany.svg'),
--- ('Geography', 3, 'Which country is shown in this outline?', 'Greece', 'multiple_choice', 'Greece', 'Australia', 'Peru', 'Kenya', '/assets/country-outlines/greece.svg'),
--- ('Geography', 2, 'Which country is shown in this outline?', 'India', 'multiple_choice', 'India', 'Canada', 'Germany', 'Uganda', '/assets/country-outlines/india.svg'),
--- ('Geography', 2, 'Which country is shown in this outline?', 'Kenya', 'multiple_choice', 'Kenya', 'Senegal', 'South Korea', 'Greece', '/assets/country-outlines/kenya.svg'),
--- ('Geography', 3, 'Which country is shown in this outline?', 'Peru', 'multiple_choice', 'Peru', 'Australia', 'India', 'Germany', '/assets/country-outlines/peru.svg'),
--- ('Geography', 3, 'Which country is shown in this outline?', 'Senegal', 'multiple_choice', 'Senegal', 'Kenya', 'Uganda', 'Canada', '/assets/country-outlines/senegal.svg'),
--- ('Geography', 2, 'Which country is shown in this outline?', 'South Korea', 'multiple_choice', 'South Korea', 'Greece', 'Peru', 'Australia', '/assets/country-outlines/south-korea.svg'),
--- ('Geography', 2, 'Which country is shown in this outline?', 'Uganda', 'multiple_choice', 'Uganda', 'India', 'Senegal', 'Germany', '/assets/country-outlines/uganda.svg');
+('Geography', 2, 'Which country is shown in this outline?', 'Australia', 'multiple_choice', 'Australia', 'Canada', 'Kenya', 'Germany', 'http://localhost:3000/assets/country-outlines/australia.svg'),
+('Geography', 3, 'Which country is shown in this outline?', 'Canada', 'multiple_choice', 'Canada', 'India', 'Greece', 'Peru', 'http://localhost:3000/assets/country-outlines/canada.svg'),
+('Geography', 2, 'Which country is shown in this outline?', 'Germany', 'multiple_choice', 'Germany', 'Senegal', 'Uganda', 'South Korea', 'http://localhost:3000/assets/country-outlines/germany.svg'),
+('Geography', 3, 'Which country is shown in this outline?', 'Greece', 'multiple_choice', 'Greece', 'Australia', 'Peru', 'Kenya', 'http://localhost:3000/assets/country-outlines/greece.svg'),
+('Geography', 2, 'Which country is shown in this outline?', 'India', 'multiple_choice', 'India', 'Canada', 'Germany', 'Uganda', 'http://localhost:3000/assets/country-outlines/india.svg'),
+('Geography', 2, 'Which country is shown in this outline?', 'Kenya', 'multiple_choice', 'Kenya', 'Senegal', 'South Korea', 'Greece', 'http://localhost:3000/assets/country-outlines/kenya.svg'),
+('Geography', 3, 'Which country is shown in this outline?', 'Peru', 'multiple_choice', 'Peru', 'Australia', 'India', 'Germany', 'http://localhost:3000/assets/country-outlines/peru.svg'),
+('Geography', 3, 'Which country is shown in this outline?', 'Senegal', 'multiple_choice', 'Senegal', 'Kenya', 'Uganda', 'Canada', 'http://localhost:3000/assets/country-outlines/senegal.svg'),
+('Geography', 2, 'Which country is shown in this outline?', 'South Korea', 'multiple_choice', 'South Korea', 'Greece', 'Peru', 'Australia', 'http://localhost:3000/assets/country-outlines/south-korea.svg'),
+('Geography', 2, 'Which country is shown in this outline?', 'Uganda', 'multiple_choice', 'Uganda', 'India', 'Senegal', 'Germany', 'http://localhost:3000/assets/country-outlines/uganda.svg');

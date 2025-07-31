@@ -87,18 +87,6 @@ input[type="radio"] {
   background-color: #ffcc00;
 }
 
-/* Results Display */
-#results {
-  margin-top: 1.5em;
-  font-size: 1.2rem;
-  color: #444;
-  background-color: #fffbea;
-  border: 2px dashed #ffd700;
-  padding: 1em;
-  border-radius: 6px;
-  text-align: center;
-}
-
 /* Start Game button  */
 
 #start-game {
