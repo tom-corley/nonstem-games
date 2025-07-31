@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GamePlay Page</title>
+  <link rel="stylesheet" href="../styles/gameplay.css" />
+</head>
+<body>
+  <section>
+    
+    <div id="navbar">
+      <div id='navbar-h3'>
+              <h3>Quiz Grad</h3>
+          </div>
+          <div id='navbar-img'>
+              <img src="..//assets/quizlogo.png" alt="QuizLogo" /> 
+          </div>
+          <div id="navbar-links">
+              <a href="../index.html">Home</a>
+              <a href="../index.html">LogOut</a>
+          </div>
+    </div>
+  </section>
+  <section id="game-start">
+
+  </section>
+  <div id="start-game">
+      <button id="start-btn">Start Game</button>
+      <div id="timer">Time: 0s</div>
+      <input type="text" id="username-input" placeholder="Enter your name" />
+  </div>
+  
+  <section id="game-container">
+    
+    <form id="quiz-form"></form>
+    <button id="submit-btn">Submit Answers</button>
+    <div id="results"></div>
+  </section>
+
+  <script src="../scripts/gameplaylogic.js" defer></script>
+</body>
+</html>

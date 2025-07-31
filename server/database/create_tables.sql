@@ -62,3 +62,22 @@ CREATE TABLE game_questions (
 
     PRIMARY KEY (game_id, question_id)
 );
+INSERT INTO questions (
+    category, difficulty, question_text, correct_answer, question_type,
+    choice_a, choice_b, choice_c, choice_d
+) VALUES 
+('Geography', 2, 'What is the capital city of Australia?', 'Canberra', 'multiple_choice', 'Sydney', 'Melbourne', 'Canberra', 'Brisbane'),
+('Geography', 2, 'Which country is known as the Land of the Rising Sun?', 'Japan', 'multiple_choice', 'China', 'Japan', 'South Korea', 'Thailand'),
+('Geography', 2, 'What is the capital city of Canada?', 'Ottawa', 'multiple_choice', 'Toronto', 'Vancouver', 'Ottawa', 'Montreal'),
+('Geography', 3, 'Which country has the most natural lakes?', 'Canada', 'multiple_choice', 'Russia', 'United States', 'Canada', 'Brazil'),
+('Geography', 2, 'What is the capital city of Brazil?', 'Brasília', 'multiple_choice', 'Rio de Janeiro', 'São Paulo', 'Brasília', 'Salvador'),
+('Geography', 1, 'Which country is home to the Eiffel Tower?', 'France', 'multiple_choice', 'Italy', 'France', 'Germany', 'Spain'),
+('Geography', 1, 'What is the capital city of India?', 'New Delhi', 'multiple_choice', 'Mumbai', 'New Delhi', 'Kolkata', 'Bangalore'),
+('Geography', 2, 'Which country is known for its pyramids and the Sphinx?', 'Egypt', 'multiple_choice', 'Mexico', 'Egypt', 'Greece', 'Turkey'),
+('Geography', 2, 'What is the capital city of Italy?', 'Rome', 'multiple_choice', 'Venice', 'Rome', 'Florence', 'Milan'),
+('Geography', 4, 'Which country is the largest by land area?', 'Russia', 'multiple_choice', 'United States', 'China', 'Russia', 'Canada'),
+('Geography', 2, 'What is the capital city of Germany?', 'Berlin', 'multiple_choice', 'Munich', 'Berlin', 'Frankfurt', 'Hamburg'),
+('Geography', 3, 'Which country is known for its maple syrup production?', 'Canada', 'multiple_choice', 'United States', 'Canada', 'Sweden', 'Norway'),
+('Geography', 3, 'What is the capital city of South Africa?', 'Pretoria', 'multiple_choice', 'Cape Town', 'Pretoria', 'Johannesburg', 'Durban'),
+('Geography', 3, 'Which country is home to the Great Wall?', 'China', 'multiple_choice', 'Japan', 'China', 'India', 'South Korea'),
+('Geography', 2, 'What is the capital city of Spain?', 'Madrid', 'multiple_choice', 'Barcelona', 'Madrid', 'Seville', 'Valencia');
