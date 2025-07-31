@@ -11,29 +11,26 @@
   <link rel="stylesheet" href="../styles/login.css" />
   <script type="module" src="../scripts/login.js" defer></script>
 </head>
-
 <body>
   <header class="p-[10px] border-b border-gray-300">
     <nav class="flex items-center">
-      <img class="w-[25px] h-[25px]" src="../assests/logo.jpg" alt="logo icon">
+      <a href="../index.html"><img class="w-[25px] h-[25px]" src="../assets/logo.jpg" alt="logo icon"></a>
       <ul class="flex justify-end flex-1 gap-4 ml-4 mr-5">
-        <li class="text-[12px] font-bold">Login </li>
-        <li class="text-[12px] font-bold">Registration </li>
       </ul>
     </nav>
   </header>
-  <main class="flex justify-between">
-    <div class="p-5">
-      <h2 class="font-semibold text-[20px]">Earth IQ</h2>
-      <p class="font-normal text-[12px]"">Welcome back</p>
-      <p class=" font-normal text-[12px]">Please login or signup to your account</p>
+  <main class="flex justify-around">
+    <div class="p-5 h-[300px]">
+      <h2 style="color: var(--color-grey)" class="font-semibold text-[20px]">Earth IQ</h2>
+      <p style="color: var(--color-grey)"  class="font-normal text-[12px]"">Welcome back</p>
+      <p style="color: var(--color-grey)"  class=" font-normal text-[12px]">Please login or signup to your account</p>
       <form id="login-form">
-        <div class="w-full max-w-sm min-w-[200px] mt-10">
+        <div class="w-full max-w-sm min-w-[200px] mt-7">
           <input id="username" style="color:var(--color-grey);"
             class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border border-l-2 px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow"
             placeholder="Username" />
         </div>
-        <div class="w-full max-w-sm min-w-[200px] mt-5">
+        <div class="w-full max-w-sm min-w-[200px] mt-3">
           <input id="password" type="password" style="color:var(--color-grey);"
             class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border border-l-2 px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow"
             placeholder="Password" />
@@ -42,18 +39,20 @@
           class="border-1 rounded-sm text-white text-[7px] p-[7px] mt-[20px] w-[60px]" type="submit">Login</button>
         <div id="login-message" style="margin-top:10px; min-height:1.5em;"></div>
       </form>
-      <div class="flex justify-between mt-[20px]">
-        <p style="color:var(--color-grey);" class="font-bold text-[14px] mt-[10px]">New Here?</p>
-        <button style="color:var(--color-yellow);"
+      <div class="flex justify-between">
+       <p style="color:var(--color-grey);" class="font-bold text-[14px] mt-[10px]">New Here?</p>
+        <a href="./register.html"><button style="color:var(--color-yellow);"
           class="border-1 rounded-xs text-white text-[7px] p-[4px] shadow-lg mt-[5px] w-[60px]" type="button">Create
           Account</button>
+        </a>
       </div>
     </div>
-    <div>
-      <img class="w-[400px] group image" src="../assets/login_group.png"  />
+
+    <div class="border-l-1 border-gray-300"">
+      <img class="w-[300px]" src="../assets/login_group.png" src="group image" />
     </div>
   </main>
-  <footer class="border-t-1 flex justify-around pt-[6px] pb-[3px]">
+  <footer class="border-t-1 flex justify-around pt-[6px] pb-[3px] border-gray-300">
     <div class="flex flex-col">
       <p style="color:var(--color-yellow);" class="text-xs font-bold">Earth IQ</p>
       <p style="color:var(--color-grey);" class="text-xs  text-[7px]">A Fun Quiz App</p>

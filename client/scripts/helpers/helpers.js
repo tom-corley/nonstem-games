@@ -15,4 +15,14 @@ function removeToken() {
   localStorage.removeItem('token')
 }
 
-export { getToken, removeToken };
+function formatDate(dateStr) {
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const date = new Date(dateStr);
+  const day = date.getDate(); // 2
+  const month = months[date.getMonth()]; // "Mar"
+  const year = date.getFullYear(); // 2025
+  return `${month} ${day} ${year}`; // "Mar 2 2025"
+}
+
+export { getToken, removeToken, formatDate };
