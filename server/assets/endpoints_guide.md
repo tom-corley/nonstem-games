@@ -133,7 +133,6 @@
 }
 ```
 ---
-```
 ### Games
 
 ### POST /games/start (auth required)
