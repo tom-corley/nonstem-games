@@ -1,5 +1,5 @@
 // Set token to local storage
-function storeToken(token) {
+export function storeToken(token) {
   if (token) {
     localStorage.setItem('token', token);
   }
@@ -15,4 +15,4 @@ function removeToken() {
   localStorage.removeItem('token')
 }
 
-module.exports = { storeToken, getToken, removeToken };
+export { getToken, removeToken };

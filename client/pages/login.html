@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../styles/global.css" />
   <link rel="stylesheet" href="../styles/login.css" />
-  <script src="../scripts/login.js" defer></script>
+  <script type="module" src="../scripts/login.js" defer></script>
 </head>
 
 <body>
@@ -29,12 +29,12 @@
       <p class=" font-normal text-[12px]">Please login or signup to your account</p>
       <form id="login-form">
         <div class="w-full max-w-sm min-w-[200px] mt-10">
-          <input style="color:var(--color-grey);"
+          <input id="username" style="color:var(--color-grey);"
             class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border border-l-2 px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow"
             placeholder="Username" />
         </div>
         <div class="w-full max-w-sm min-w-[200px] mt-5">
-          <input style="color:var(--color-grey);"
+          <input id="password" type="password" style="color:var(--color-grey);"
             class="h-[30px] w-full placeholder:text-slate-400 text-[8px] text-slate-700 text-sm border border-l-2 px-3 py-2 transition duration-300 ease focus:outline-none focus:border-blue-500 hover:border-blue-300 shadow-sm focus:shadow"
             placeholder="Password" />
         </div>
