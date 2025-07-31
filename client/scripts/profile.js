@@ -1,4 +1,4 @@
-import { getToken } from './helpers/helpers.js';
+import { getToken, formatDate } from './helpers/helpers.js';
  const token = getToken();
   const payloadBase64 = token.split('.')[1];
   const decodePayload = atob(payloadBase64)
@@ -15,12 +15,29 @@ const response = await fetch(`http://localhost:3000/users/${userId}`, {
   const user = await response.json();
 
   document.getElementById("profile").innerHTML = `
-    <p><strong>Username:  </strong> ${user.username}</p>
-    <p><strong>Join Date:  </strong> ${user.join_date}</p>
-    <p><strong>Is Admin:  </strong> ${user.is_admin? "Admin" : "Non-Admin"}</p>
-    <p><strong>High Score:  </strong> ${user.high_score}</p>
-    <p><strong>Games Played:  </strong> ${user.games_played}</p>
-    <p><strong>All Time Score:  </strong> ${user.all_time_score}</p>`
+    <h1 class="my-1 text-center text-xl font-bold leading-8 text-gray-900">${user.username}</h1>
+    <ul class="mt-3 divide-y rounded bg-gray-100 py-2 px-3 text-gray-600 shadow-sm hover:text-gray-700 hover:shadow">
+        <li class="flex items-center py-1 text-sm">
+          <span>Game played</span>
+            <span class="ml-auto"><span class="rounded-full bg-yellow-200 py-1 px-2 text-xs font-medium text-white-700">3</span></span>
+        </li>
+        <li class="flex items-center py-1 text-sm">
+          <span>Score</span>
+            <span class="ml-auto"><span class="rounded-full bg-yellow-200 py-1 px-2 text-xs font-medium text-white-700">${user.high_score}</span></span>
+        </li>
+        <li class="flex items-center py-1 text-sm">
+          <span>Join Date </span>
+            <span class="ml-auto">${formatDate(user.join_date)}</span>
+        </li>
+         <li class="flex items-center py-1 text-sm">
+          <span>Games Played</span>
+            <span class="ml-auto"> <span class="rounded-full bg-yellow-200 py-1 px-2 text-xs font-medium text-white-700">${user.games_played}</span></span>
+        </li>
+         <li class="flex items-center py-1 text-sm">
+          <span>All Time Score</span>
+            <span class="ml-auto"> <span class="rounded-full bg-yellow-200 py-1 px-2 text-xs font-medium text-white-700">${user.all_time_score}</span></span>
+        </li>
+    </ul>`
 });
 
 

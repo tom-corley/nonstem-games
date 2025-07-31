@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../styles/global.css" />
   <link rel="stylesheet" href="../styles/login.css" />
+  <link rel="stylesheet" href="../styles/index.css" />
   <script type="module" src="../scripts/profile.js" defer></script>
 </head>
 <body>
@@ -15,18 +16,25 @@
     <nav class="flex items-center">
       <img class="w-[25px] h-[25px]" src="../assets/logo.jpg" alt="logo icon">
       <ul class="flex justify-end flex-1 gap-4 ml-4 mr-5">
-        <li class="text-[12px] font-bold">Login </li>
-        <li class="text-[12px] font-bold">Registration </li>
+        <li class="text-[12px] font-bold">Logout </li>
       </ul>
     </nav>
   </header>
-  <main>
-    <div style="color:var(--color-yellow);" class="mx-auto w-[50%] mt-[20px] p-[5px] mb-[30px] border-1 rounded-sm" >
-    <div id="profile"></div>
-    <button onclick="window.location.href='update-profile.html?id=2'" type="submit">Edit Profile</button>
-    <button id="delete" type="button">Delete</button>
-   </div>
+  <main class="mx-auto w-[50%]">
+       <div class="m-[20px]">
+         <div class="left-banner rounded-lg border-1 bg-white px-4 pt-4 pb-4 shadow-lg">
+         <p style="color:var(--color-yellow);">
+           <i class="fa fa-user-circle-o" aria-hidden="true"></i><span class="ml-[5px]">Student Information</span></p>
+              <div class="mt-[5px] p-[5px]">
+              <div id="profile">
+              </div>
+              <button style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white font-bold text-[7px] p-[7px] pt-[5px] mt-[5px] w-[60px]" onclick="window.location.href='update-profile.html?id=2'" type="submit">Edit Profile</button>
+              <button style="background-color:var(--color-yellow);" class="border-1 rounded-sm text-white font-bold text-[7px] p-[7px] pt-[5px] mt-[5px] w-[60px]" id="delete" type="button">Delete</button>
+            </div>
+         </div>
+       </div>
   </main>
+
    <footer class="border-t-1 flex justify-around pt-[6px] pb-[3px]">
     <div class="flex flex-col">
       <p style="color:var(--color-yellow);" class="text-xs font-bold">Earth IQ</p>
