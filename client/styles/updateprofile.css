@@ -1,44 +1,14 @@
-:root {
-  --color-yellow: #fdd835;
-  --color-grey: #666666;
-  --color-light-grey: #aaa;
+@import './global.css';
+
+* {
+ font-family: var(--font-body);
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-  color: #333;
-}
 
-header {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  width: 25px;
-  height: 25px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  margin-right: 1.25rem;
-  list-style: none;
-  font-size: 12px;
-  font-weight: bold;
-}
 
 .content-wrapper {
   max-width: 50%;
-  margin: 20px auto 30px auto;
+  margin: 10px auto 5px auto;
   padding: 5px;
 }
 
@@ -89,68 +59,13 @@ header {
 }
 
 .back-btn {
-  color: var(--color-yellow);
-  background-color: #333;
-  border: none;
+  color: var(--color-yellow) ;
+  background-color: white;
+  border: 1px solid var(--color-yellow) ;
   padding: 8px;
   font-size: 7px;
   border-radius: 4px;
   width: 80px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   cursor: pointer;
-}
-
-.footer {
-  border-top: 1px solid #ccc;
-  display: flex;
-  justify-content: space-around;
-  padding: 6px 0;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.branding .title {
-  color: var(--color-yellow);
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.branding .subtitle {
-  color: var(--color-grey);
-  font-size: 7px;
-}
-
-.email-input {
-  color: var(--color-grey);
-  font-size: 7px;
-  padding: 5px;
-  width: 150px;
-  height: 30px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-.subscribe-btn {
-  background-color: var(--color-yellow);
-  border: none;
-  color: white;
-  font-size: 7px;
-  padding: 5px;
-  width: 70px;
-  height: 20px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.footer-links {
-  display: flex;
-  gap: 8px;
-  font-size: 10px;
-  font-weight: bold;
-  color: var(--color-grey);
-}
-
-.socials i {
-  color: var(--color-yellow);
-  margin-right: 5px;
 }
