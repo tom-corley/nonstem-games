@@ -74,8 +74,8 @@ const deleteUser = async(e, userId, token) => {
 
 const logoutUser = () => {
     removeToken();
+    removeUserId();
      setTimeout(() => {
       window.location.href = `../index.html`;
     }, 500);
-
 }
