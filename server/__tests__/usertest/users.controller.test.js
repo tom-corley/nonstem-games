@@ -2,7 +2,6 @@ const request = require('supertest');
 const app = require('../../app');
 const Users = require('../../models/users');
 
-// Mock the Users model methods used in controllers
 jest.mock('../../models/users');
 
 // Mock the authenticate middleware to inject req.user

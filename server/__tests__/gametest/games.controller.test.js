@@ -1,12 +1,10 @@
-// __tests__/gametest/games.controller.test.js
-
 jest.mock('../../middleware/auth', () => (req, res, next) => next());
 
 const request = require('supertest');
 const app = require('../../app');
 
 const Games = require('../../models/Games');
-jest.mock('../../models/Games'); // ✅ fixed path
+jest.mock('../../models/Games'); 
 
 describe('Game Controller', () => {
   describe('POST /games/start', () => {

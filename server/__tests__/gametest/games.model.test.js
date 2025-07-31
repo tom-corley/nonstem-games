@@ -1,11 +1,9 @@
-// __tests__/gametest/games.model.test.js
-
 const db = require('../../database/connect');
 const Games = require('../../models/Games');
 const Questions = require('../../models/Questions');
 
-jest.mock('../../database/connect'); // mock db.query
-jest.mock('../../models/Questions'); // optional, to avoid real Questions logic
+jest.mock('../../database/connect');
+jest.mock('../../models/Questions'); 
 
 describe('Games model (mocked db)', () => {
   beforeEach(() => {

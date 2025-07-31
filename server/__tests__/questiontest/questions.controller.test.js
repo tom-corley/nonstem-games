@@ -1,7 +1,5 @@
 const request = require('supertest');
-const app = require('../../app');  // Correct relative path to app.js
-
-// MOCK Questions model with correct relative path to models
+const app = require('../../app'); 
 jest.mock('../../models/Questions', () => ({
   getAll: jest.fn(),
   findById: jest.fn(),

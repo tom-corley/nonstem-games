@@ -3,10 +3,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Users = require('../../models/users');
 
-jest.mock('../../database/connect'); // mock db.query
-jest.mock('bcrypt');                // mock bcrypt.compare
+jest.mock('../../database/connect');
+jest.mock('bcrypt');               
 
-// Mock jwt.sign to return a dummy token and capture call params
 jest.mock('jsonwebtoken', () => ({
   sign: jest.fn(() => 'dummyToken')
 }));
@@ -83,5 +82,5 @@ describe('User model (mocked)', () => {
     });
   });
 
-  // Add more tests for other methods if needed
+
 });

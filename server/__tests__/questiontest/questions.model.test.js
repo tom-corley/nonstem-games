@@ -1,5 +1,3 @@
-// __tests__/questions.model.test.js
-
 const db = require('../../database/connect');
 const Questions = require('../../models/Questions');
 
