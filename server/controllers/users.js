@@ -16,6 +16,7 @@ async function register(req, res) {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+  
 }
 
 // POST /users/login

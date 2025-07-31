@@ -1,7 +1,7 @@
 const db = require('../../database/connect');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Users = require('../../models/users');
+const Users = require('../../models/Users');
 
 jest.mock('../../database/connect');
 jest.mock('bcrypt');               
