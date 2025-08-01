@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="../styles/global.css" />
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="../styles/updateprofile.css" />
+  <script type="module" src="../scripts/update-profile.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+   <header class="p-[10px] border-b border-gray-300">
+    <nav class="flex items-center">
+      <a href="../index.html"><img class="w-[25px] h-[25px]" src="../assets/logo.jpg" alt="logo icon"></a>
+      <ul class="flex justify-end flex-1 gap-4 ml-4 mr-5">
+        <a style="color: var(--color-grey);" href="./login.html"><li class="text-[12px] font-bold">Login</li></a>
+        <a style="color: var(--color-grey);" href="./register.html"><li class="text-[12px] font-bold">Register</li></a>
+        <a style="color: var(--color-grey);" id="profile"href="./pages/profile.html"><li class="text-[12px] font-bold"> <i class="fa fa-user-circle-o" aria-hidden="true"></i></li></a>
+      </ul>
+    </nav>
+  </header>
+   <main class="content-wrapper h-[300px] p-[10px]">
+    <h2 style="color: var(--color-grey);" class="font-bold text-[14px]">Edit Your Username</h2>
+    <form id="editForm" class="edit-form">
+
+      <div style="color: var(--color-grey);" class="font-bold text-[14px]" id="prev-username" class="prev-username" style="margin-bottom:10px;"></div>
+      <input type="text" id="username" placeholder="Enter new username" required />
+      <button class="font-bold text-[16px]" type="submit">Update</button>
+      <div id="message" class="message"></div>
+    </form>
+
+    <div class="info-block">
+      <p class="hint">Need to update your profile information?</p>
+      <a href="./profile.html"> <button class="back-btn border-0 font-bold text-[16px]">Go Back</button> </a>
+    </div>
+  </main>
+  <footer style="color:var(--color-light-grey);" class="border-t-1 flex justify-between p-[10px] pt-[6px] pb-[3px]">
+    <div class="flex flex-col">
+      <p style="color:var(--color-yellow);" class="text-xs font-bold">Earth IQ</p>
+      <p style="color:var(--color-grey);" class="text-xs  text-[7px]">A Fun Quiz App</p>
+    </div>
+    <div>
+     <span style="color:var(--color-yellow)" class="text-[12px] font-bold">Share</span> <i style="color:var(--color-light-grey);" class="fa fa-share pr-[10px]" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-facebook" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-twitter" aria-hidden="true"></i>
+      <i style="color:var(--color-yellow);" class="fa fa-instagram" aria-hidden="true"></i>
+    </div>
+  </footer>
+</body>
+</html>

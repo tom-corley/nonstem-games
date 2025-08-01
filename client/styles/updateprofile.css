@@ -1,0 +1,71 @@
+@import './global.css';
+
+* {
+ font-family: var(--font-body);
+}
+
+
+
+.content-wrapper {
+  max-width: 50%;
+  margin: 10px auto 5px auto;
+  padding: 5px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-form input {
+  height: 30px;
+  width: 100%;
+  font-size: 12px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  color: var(--color-light-grey);
+  border-radius: 4px;
+}
+
+.edit-form button {
+  background-color: var(--color-yellow);
+  border: none;
+  color: white;
+  font-size: 7px;
+  padding: 7px;
+  width: 60px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 10px;
+  min-height: 1.5em;
+  font-size: 12px;
+  color: green;
+}
+
+.info-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.hint {
+  color: var(--color-grey);
+  font-size: 14px;
+}
+
+.back-btn {
+  color: var(--color-yellow) ;
+  background-color: white;
+  border: 1px solid var(--color-yellow) ;
+  padding: 8px;
+  font-size: 7px;
+  border-radius: 4px;
+  width: 80px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
