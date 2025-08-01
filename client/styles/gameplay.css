@@ -1,4 +1,15 @@
 /* Base Reset & Body Styling */
+
+@import './global.css';
+
+* {
+ font-family: var(--font-body);
+}
+
+nav ul li {
+  color: var(--color-grey);
+}
+
 body {
   margin: 0;
   padding: 0;
