@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Get the "Start Solving" button
   const startSolvingBtn = document.getElementById('start-solving-btn');
   console.log(token);
-  if (localStorage.getItem('loggedIn') === 'true') {
+  if (token) {
      document.getElementById('profile').style.display = 'inline';
   }
 
