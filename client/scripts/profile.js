@@ -17,21 +17,21 @@ const response = await fetch(`http://localhost:3000/users/${userId}`, {
   document.getElementById("profile").innerHTML = `
     <h1 class="my-1 text-center text-xl font-bold leading-8 text-gray-900">${user.username}</h1>
     <ul class="mt-3 divide-y rounded bg-gray-100 py-2 px-3 text-gray-600 shadow-sm hover:text-gray-700 hover:shadow">
-       <li class="flex items-center py-1 text-sm">
+       <li class="flex items-center py-1 pb-1 text-sm">
           <span>Join Date </span>
             <span class="ml-auto">${formatDate(user.join_date)}</span>
         </li>
-        <li class="flex items-center py-1 text-sm">
+        <li class="flex items-center py-1 pb-1 text-sm">
           <span>Games played</span>
             <span class="ml-auto"><span class="rounded-full bg-yellow-200 py-1 px-2 text-xs font-medium text-white-700">${user.games_played}</span></span>
         </li>
-        <li class="flex items-center py-1 text-sm">
-          <span>Score</span>
+        <li class="flex items-center py-1 pb-1 text-sm">
+          <span>High Score</span>
             <span class="ml-auto"><span class="rounded-full bg-yellow-200 py-1 px-2 text-xs font-medium text-white-700">${user.high_score}</span></span>
         </li>
-         <li class="flex items-center py-1 text-sm">
+         <li class="flex items-center py-1 pb-1 text-sm">
           <span>All Time Score</span>
-            <span class="ml-auto"> <span class="rounded-full bg-yellow-200 py-1 px-2 text-xs font-medium text-white-700">${user.all_time_score}</span></span>
+            <span class="ml-auto"> <span class="rounded-full bg-yellow-200 py-1 px-2 text-xs font-medium text-white-700">${user.all_time_score*10}</span></span>
         </li>
     </ul>`
 });
